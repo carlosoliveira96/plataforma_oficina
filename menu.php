@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="static/css/fontawesome-all.css">
         <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">-->
-        <link rel="stylesheet" href="../static/css/customScrollbar.css">
+        <link rel="stylesheet" href="static/css/customScrollbar.css">
         <!-- Arquivos JS -->
         <script src="static/js/jquery.js"></script>
         <script src="static/js/popper.js"></script>
@@ -125,13 +125,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">Fornecedor</a>
+                                    <a href="fornecedor.php">Fornecedor</a>
                                 </li>
                                 <li>
-                                    <a href="#">Seguradora</a>
+                                    <a href="seguradora.php">Seguradora</a>
                                 </li>
                                 <li>
-                                    <a href="#">Corretor</a>
+                                    <a href="corretor.php">Corretor</a>
                                 </li>
                             </ul>
                         </div>

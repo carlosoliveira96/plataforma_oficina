@@ -163,55 +163,47 @@ include 'menu.php';
                     </div>
                     <div class="text-danger"></div>
                 </div>
-                <div class="col-3">
-                    <div class="form-check small" style="margin-top: 2.5rem">
-                        <input class="form-check-input" type="checkbox" value="" id="sem_cep" onchange="nao_sei_cep()">
-                        <label class="form-check-label" for="defaultCheck1" style="margin-top: 0.2rem">
-                            Não sei o CEP
-                        </label>
-                    </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <h6 class="small" style="margin-top:1rem"><i>Endereco</i></h6>   
                     <div class="input-group">
-                        <input type="text" id="endereco" disabled class="form-control small" placeholder="Ex.: Exemplo exemplo exemplo"  disabled>
+                        <input type="text" id="endereco" disabled class="form-control small" placeholder="Ex.: Exemplo exemplo exemplo">
                     </div>
                     <div class="text-danger"></div>
                 </div>
                 <div class="col-2">
                     <h6 class="small" style="margin-top:1rem"><i>Número</i></h6> 
                     <div class="input-group">
-                        <input type="text" id="numero" disabled class="form-control small" placeholder="Ex.: 99 "  disabled>
+                        <input type="text" id="numero" disabled class="form-control small" placeholder="Ex.: 99">
                     </div>
                     <div class="text-danger"></div>
                 </div>
                 <div class="col-4">
                     <h6 class="small" style="margin-top:1rem"><i>Complemento</i></h6>    
                     <div class="input-group">
-                        <input type="text" id="complemento" disabled class="form-control small" placeholder="Ex.: Exemplo Exemplo " maxlength="50" disabled>
+                        <input type="text" id="complemento" disabled class="form-control small" placeholder="Ex.: Exemplo Exemplo " maxlength="50">
                     </div>
                     <div class="text-danger"></div>
                 </div>
                 <div class="col-6">
                     <h6 class="small" style="margin-top:1rem"><i>Bairro</i></h6> 
                     <div class="input-group">
-                        <input type="text" id="bairro" disabled class="form-control small" placeholder="Ex.: Exemplo Exemplo " maxlength="100" disabled>
+                        <input type="text" id="bairro" disabled class="form-control small" placeholder="Ex.: Exemplo Exemplo " maxlength="100">
                     </div>
                     <div class="text-danger"></div>
                 </div>
                 <div class="col-4">
                     <h6 class="small" style="margin-top:1rem"><i>Cidade</i></h6> 
                     <div class="input-group">
-                        <input type="text" id="cidade" disabled class="form-control small" placeholder="Ex.: Exemplo exemplo" maxlength="100" disabled>
+                        <input type="text" id="cidade" disabled class="form-control small" placeholder="Ex.: Exemplo exemplo" maxlength="100">
                     </div>
                     <div class="text-danger"></div>
                 </div>
                 <div class="col-2">
                     <h6 class="small" style="margin-top:1rem"><i>UF</i></h6> 
                     <div class="input-group">
-                        <input type="text" id="uf" disabled  class="form-control small" placeholder="Ex.: DF" maxlength="2" disabled>
+                        <input type="text" id="uf" disabled  class="form-control small" placeholder="Ex.: DF" maxlength="2">
                     </div>
                     <div class="text-danger"></div>
                 </div>

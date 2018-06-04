@@ -78,53 +78,45 @@ include 'menu.php';
         </div>
         <div class="text-danger"></div>
     </div>
-    <div class="col-2">
-        <div class="form-check" style="margin-top: 2.5rem">
-            <input class="form-check-input" type="checkbox" value="" id="sem_cep" onchange="nao_sei_cep()">
-            <label class="form-check-label small" for="defaultCheck1">
-                Não sei o CEP
-            </label>
-        </div>
-    </div>
     <div class="col-6">
         <h6 style="margin-top:1rem" class="small"><b>Endereço</b></h6>	
         <div class="input-group input-group-sm">
-            <input type="text" id="endereco" class="form-control" placeholder="Ex.: Exemplo exemplo exemplo"  disabled>
+            <input type="text" id="endereco" class="form-control" placeholder="Ex.: Exemplo exemplo exemplo">
         </div>
         <div class="text-danger"></div>
     </div>
     <div class="col-2">
         <h6 style="margin-top:1rem" class="small"><b>Número</b></h6>	
         <div class="input-group input-group-sm">
-            <input type="text" id="numero" class="form-control" placeholder="Ex.: 99 "  disabled>
+            <input type="text" id="numero" class="form-control" placeholder="Ex.: 99">
         </div>
         <div class="text-danger"></div>
     </div>
     <div class="col-4">
         <h6 style="margin-top:1rem" class="small"><b>Complemento</b></h6>	
         <div class="input-group input-group-sm">
-            <input type="text" id="complemento" class="form-control" placeholder="Ex.: Exemplo Exemplo " maxlength="50" disabled>
+            <input type="text" id="complemento" class="form-control" placeholder="Ex.: Exemplo Exemplo " maxlength="50">
         </div>
         <div class="text-danger"></div>
     </div>
     <div class="col-6">
         <h6 style="margin-top:1rem" class="small"><b>Bairro</b></h6>	
         <div class="input-group input-group-sm">
-            <input type="text" id="bairro" class="form-control" placeholder="Ex.: Exemplo Exemplo " maxlength="100" disabled>
+            <input type="text" id="bairro" class="form-control" placeholder="Ex.: Exemplo Exemplo " maxlength="100">
         </div>
         <div class="text-danger"></div>
     </div>
     <div class="col-4">
         <h6 style="margin-top:1rem" class="small"><b>Cidade</b></h6>	
         <div class="input-group input-group-sm">
-            <input type="text" id="cidade" class="form-control" placeholder="Ex.: Exemplo exemplo" maxlength="100" disabled>
+            <input type="text" id="cidade" class="form-control" placeholder="Ex.: Exemplo exemplo" maxlength="100">
         </div>
         <div class="text-danger"></div>
     </div>
     <div class="col-2">
         <h6 style="margin-top:1rem" class="small"><b>UF</b></h6>	
         <div class="input-group input-group-sm">
-            <input type="text" id="uf" class="form-control" placeholder="Ex.: DF" maxlength="2" disabled>
+            <input type="text" id="uf" class="form-control" placeholder="Ex.: DF" maxlength="2">
         </div>
         <div class="text-danger"></div>
     </div>

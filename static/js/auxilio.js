@@ -64,63 +64,6 @@ function remove_msg_expediente(){
     $('#msg_expediente').html('');
 }
 
-//Bloqueia/desbloqueia campos 'não sei cep'
-function nao_sei_cep(){
-
-    var sem_cep = $('#sem_cep');
-
-    var cep = $('#cep');
-    var endereco = $('#endereco');
-    var numero = $('#numero');
-    var complemento = $('#complemento');
-    var bairro = $('#bairro');
-    var cidade = $('#cidade');
-    var uf = $('#uf');
-
-    if(sem_cep.is(':checked')){
-        cep.val("");
-        cep.attr("disabled" , "true");
-
-        endereco.val("");
-        endereco.removeAttr("disabled" , "true");
-
-        numero.val("");
-        numero.removeAttr("disabled" , "true");
-        
-        complemento.val("");
-        complemento.removeAttr("disabled" , "true");
-        
-        bairro.val("");
-        bairro.removeAttr("disabled" , "true");
-        
-        cidade.val("");
-        cidade.removeAttr("disabled" , "true");
-        
-        uf.val("");
-        uf.removeAttr("disabled" , "true");
-    }else{
-        cep.removeAttr("disabled");
-
-        endereco.val("");
-        endereco.attr("disabled" , "true");
-
-        numero.val("");
-        numero.attr("disabled" , "true");
-        
-        complemento.val("");
-        complemento.attr("disabled" , "true");
-        
-        bairro.val("");
-        bairro.attr("disabled" , "true");
-        
-        cidade.val("");
-        cidade.attr("disabled" , "true");
-    
-        uf.val("");
-        uf.attr("disabled" , "true");
-    }
-}
-
 //Busca endereço pelo cep
 function busca_cep(){
 
@@ -147,22 +90,22 @@ function busca_cep(){
 
                
            }else{
-                add_erro_input($('#cep') , 'CEP inválido')
+                add_erro_input($('#cep') , 'CEP inválido');
                 $('#endereco').val('');
                 $('#numero').val('');
                 $('#complemento').val('');
                 $('#bairro').val('');
                 $('#cidade').val('');
                 $('#uf').val('');	
-
-                $('#endereco').attr("disabled" , true);
-                $('#numero').attr("disabled" , true);
-                $('#complemento').attr("disabled" , true);
-                $('#bairro').attr("disabled" , true);
-                $('#cidade').attr("disabled" , true);
-                $('#uf').attr("disabled" , true);
            }
        });
+    }else{
+        $('#endereco').val('');
+        $('#numero').val('');
+        $('#complemento').val('');
+        $('#bairro').val('');
+        $('#cidade').val('');
+        $('#uf').val('');	
     }
 }
 
@@ -205,4 +148,18 @@ function limpa_campos(){
     $('#hr_entrada').val("");
     $('#obs').val("");
 
+}
+
+
+//Função para verificar o tipo de pessoa selecionada no fornecedor.php
+function verifica_tipo_pessoa(){
+    var fisico = document.getElementById("check_fisica");
+    var juridico = document.getElementById("check_juridica");
+    if (fisico.checked){
+        $('#juridica').hide();
+		$('#fisica').show();
+    }else{
+        $('#fisica').hide();
+        $('#juridica').show();
+    }
 }
