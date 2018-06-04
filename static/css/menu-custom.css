@@ -40,7 +40,10 @@
   }
   body {
     font-size: 0.9rem;
+    background: linear-gradient(to bottom right,#f1f0ed, #bdbdbd);
+    width: 100%;
   }
+  
   .page-wrapper .sidebar-wrapper,
   .sidebar-wrapper .sidebar-brand > a,
   .sidebar-wrapper .sidebar-dropdown > a:after,
@@ -61,9 +64,7 @@
   
   /*----------------page-wrapper----------------*/
   
-  .page-wrapper {
-    height: 100vh;
-  }
+
   
   .page-wrapper .theme {
     width: 40px;
@@ -354,10 +355,6 @@
   
   /*--------------------------page-content-----------------------------*/
   
-  body {
-    background: linear-gradient(to bottom right,#f1f0ed, #bdbdbd);
-    width: 100%;
-  }
   .page-wrapper .page-content {
     display: inline-block;
     width: 100%;

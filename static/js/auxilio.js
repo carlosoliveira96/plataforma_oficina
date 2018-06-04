@@ -165,3 +165,44 @@ function busca_cep(){
        });
     }
 }
+
+//Função para verificar se usuário possui informações do veículo (cliente&veiculo.php)
+function esconde_campos(){
+    var check_cliente = document.getElementById("check_cliente");
+    if (check_cliente.checked){
+        $('#dados_veiculo').hide();
+        $('#info_manual').show();
+        limpa_campos();
+    } else {
+        $('#dados_veiculo').show();
+        $('#info_manual').hide();
+        limpa_campos();
+    }
+}
+
+//Função para limpar campos (cliente&veiculo.php)
+function limpa_campos(){
+    remove_erro_input($('#dt_entrada'));
+    remove_erro_input($('#hr_entrada'));
+    remove_erro_input($('#obs'));
+    remove_erro_input($('#placa'));
+    remove_erro_input($('#modelo'));
+    remove_erro_input($('#ano_modelo'));
+    remove_erro_input($('#ano_fabricacao'));
+    remove_erro_input($('#fabricante'));
+    remove_erro_input($('#cor'));
+    remove_erro_input($('#dt_entrada'));
+    remove_erro_input($('#hr_entrada'));
+    remove_erro_input($('#obs'));
+    $('#placa').val("");
+    $('#modelo').val("");
+    $('#ano_modelo').val("");
+    $('#ano_fabricacao').val("");
+    $('#fabricante').val("0");
+    $('#cor').val("");
+    $('#chassi').val("");
+    $('#dt_entrada').val("");
+    $('#hr_entrada').val("");
+    $('#obs').val("");
+
+}

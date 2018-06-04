@@ -16,11 +16,20 @@
         <link rel="stylesheet" href="../static/css/customScrollbar.css">
         <!-- Arquivos JS -->
         <script src="../static/js/jquery.js"></script>
-        <script src="../static/js/menu-custom.js"></script>
         <script src="../static/js/popper.js"></script>
-        <script src="../static/js/customScrollbat.js"></script>
-        <script src="../static/js/jasny-bootstrap.js"></script>
+        <script src="../static/js/bootstrap.js"></script>
+        
+        
+        <script src="../static/js/menu-custom.js"></script>
         <script src="../static/js/auxilio.js"></script>
+
+        <script src="../static/js/jquery-ui.js"></script>
+        <script src="../static/js/customScrollbat.js"></script>
+        <script src="../static/js/fontawesome-all.js"></script>
+        <script src="../static/js/jasny-bootstrap.js"></script>
+        
+        
+        
     </head>
     <body>
     <div class="page-wrapper cool-theme toggled" id="div">
@@ -60,7 +69,7 @@
                                     <a href="funcionarios.php">Funcionários</a>
                                 </li>
                                 <li>
-                                    <a href="#">Expedientes</a>
+                                    <a href="expedientesAdm.php">Expedientes</a>
                                 </li>
                                 <li>
                                     <a href="#">Relatórios</a>
@@ -76,7 +85,7 @@
                         <div class="sidebar-submenu">
                             <ul>
                                 <li>
-                                    <a href="#">Funcionários</a>
+                                    <a href="funcionarioListar.php">Funcionários</a>
                                 </li>
                                 <li>
                                     <a href="#">Atendimentos</a>
@@ -95,10 +104,10 @@
                         <div class="sidebar-submenu">
                             <ul>
                                 <li>
-                                    <a href="#">Serviços</a>
+                                    <a href="servicos.php">Serviços</a>
                                 </li>
                                 <li>
-                                    <a href="#">Expedientes</a>
+                                    <a href="expedientes.php">Expedientes</a>
                                 </li>
                             </ul>
                         </div>
@@ -111,7 +120,7 @@
                         <div class="sidebar-submenu">
                             <ul>
                                 <li>
-                                    <a href="#">Cliente & Veículo
+                                    <a href="cliente&veiculo.php">Cliente & Veículo
 
                                     </a>
                                 </li>
