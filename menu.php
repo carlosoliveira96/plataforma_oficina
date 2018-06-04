@@ -6,27 +6,27 @@
         <title>Portal da Oficina</title>
         <link rel="shortcut icon" href="" type="image/x-icon">
         <!-- Arquivos CSS -->
-        <link rel="stylesheet" href="../static/css/bootstrap.css">
-        <link rel="stylesheet" href="../static/css/jasny-bootstrap.css">
-        <link rel="stylesheet" href="../static/css/jquery-ui.css">
-        <link rel="stylesheet" href="../static/css/menu-custom.css">
-        <link rel="stylesheet" href="../static/css/fontawesome-all.css">
+        <link rel="stylesheet" href="static/css/bootstrap.css">
+        <link rel="stylesheet" href="static/css/jasny-bootstrap.css">
+        <link rel="stylesheet" href="static/css/jquery-ui.css">
+        <link rel="stylesheet" href="static/css/menu-custom.css">
+        <link rel="stylesheet" href="static/css/fontawesome-all.css">
         <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">-->
         <link rel="stylesheet" href="../static/css/customScrollbar.css">
         <!-- Arquivos JS -->
-        <script src="../static/js/jquery.js"></script>
-        <script src="../static/js/popper.js"></script>
-        <script src="../static/js/bootstrap.js"></script>
+        <script src="static/js/jquery.js"></script>
+        <script src="static/js/popper.js"></script>
+        <script src="static/js/bootstrap.js"></script>
         
         
-        <script src="../static/js/menu-custom.js"></script>
-        <script src="../static/js/auxilio.js"></script>
+        <script src="static/js/menu-custom.js"></script>
+        <script src="static/js/auxilio.js"></script>
 
-        <script src="../static/js/jquery-ui.js"></script>
-        <script src="../static/js/customScrollbat.js"></script>
-        <script src="../static/js/fontawesome-all.js"></script>
-        <script src="../static/js/jasny-bootstrap.js"></script>
+        <script src="static/js/jquery-ui.js"></script>
+        <script src="static/js/customScrollbat.js"></script>
+        <script src="static/js/fontawesome-all.js"></script>
+        <script src="static/js/jasny-bootstrap.js"></script>
         
         
         
