@@ -29,13 +29,16 @@ include 'menu.php';
                         <td scope="row" class="small">Expediente</td>
                         <td scope="row" class="text-center small">
                             <a href="#" class="btn btn-dark btn-sm" title="Visualizar">
-                                <i class="fas fa-eye "></i>
+                                <i class="fas fa-eye"></i>
                             </a>
                             <a href="#" class="btn btn-dark btn-sm" title="Alterar">
-                                <i class="fas fa-edit "></i>
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="#" class="btn btn-dark btn-sm" title="Imprimir">
+                                <i class="fas fa-print"></i>
                             </a>
                             <a href="#" class="btn btn-dark btn-sm" title="Remover">
-                                <i class="fas fa-trash "></i>
+                                <i class="fas fa-trash"></i>
                             </a>
                         </td>
                     </tr>
