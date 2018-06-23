@@ -1,3 +1,22 @@
+//Função para sair do sistema
+function logout(){  
+    var usuario = null;
+    var senha = null;
+    var data = {usuario: usuario, 
+        senha:senha, 
+        funcao: 'logout'
+    };
+    var html ;
+    $.ajax({
+        url: 'controller/login.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            window.location.href = "controle.php";
+        }
+    })
+}
+
 function add_erro_input(input , msg){
     input.addClass("is-invalid");
     input.parent().next().html(msg);
@@ -17,7 +36,13 @@ function monta_msg_erro(msg){
 }
 
 function monta_msg_sucesso(msg){
-    html = '<div class="alert alert-success"><i class="fa fa-check"></i><strong>'+ msg +'</strong></div>';
+    html = '<div class="alert alert-success"><i class="fa fa-check"></i><strong> '+ msg +'</strong></div>';
+    $('#msg').html(html);
+}
+
+//Monta mensagem de alerta ao excluir registro
+function monta_msg_alerta(msg){
+    html = '<div class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i><strong>'+ msg +'</strong></div>';
     $('#msg').html(html);
     window.setInterval(function(){
         remove_msg();
@@ -156,9 +181,51 @@ function verifica_tipo_pessoa(){
     var fisico = document.getElementById("check_fisica");
     var juridico = document.getElementById("check_juridica");
     if (fisico.checked){
+        $('#cnpj').val('');
+        $('#inscricao_estadual').val('');
+        $('#razao_social').val('');
+        $('#nome_fantasia').val('');
+        $('#nome').val('');
+        $('#nascimento').val('');
+        $('#cpf').val('');
+        $('#rg').val('');
+        $('#orgao_emissor').val('');
+        $('#email').val('');
+        $('#telefone').val('');
+        $('#celular').val('');
+        $('#cep').val('');
+        $('#endereco').val('');
+        $('#numero').val('');
+        $('#complemento').val('');
+        $('#bairro').val('');
+        $('#cidade').val('');
+        $('#uf').val('');
+        document.getElementById('observacao').value="";
+
         $('#juridica').hide();
 		$('#fisica').show();
     }else{
+        $('#cnpj').val('');
+        $('#inscricao_estadual').val('');
+        $('#razao_social').val('');
+        $('#nome_fantasia').val('');
+        $('#nome').val('');
+        $('#nascimento').val('');
+        $('#cpf').val('');
+        $('#rg').val('');
+        $('#orgao_emissor').val('');
+        $('#email').val('');
+        $('#telefone').val('');
+        $('#celular').val('');
+        $('#cep').val('');
+        $('#endereco').val('');
+        $('#numero').val('');
+        $('#complemento').val('');
+        $('#bairro').val('');
+        $('#cidade').val('');
+        $('#uf').val('');
+        document.getElementById('observacao').value="";
+        
         $('#fisica').hide();
         $('#juridica').show();
     }

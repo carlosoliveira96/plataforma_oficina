@@ -5,6 +5,7 @@ include 'menu.php';
     <p class="text-center small" style="color: #000"><b>Cadastro de fornecedor</b></p>
 </h2>
 <hr>
+<div id="msg"></div>
 <div class="row">
     <div class="col-12">
         <h6 class="small" style="margin-top:1rem">Tipo de cadastro</h6>
@@ -151,8 +152,59 @@ include 'menu.php';
 <div class="row" id="cadastro_fornecedor">
     <div class="col-6">
         <h6 class="small">Fabricante</h6>	
-        <div class="input-group ">
-            <input type="text" id="fabricante" class="form-control" placeholder="Ex.: Exemplo exemplo" maxlength="200" name="">
+        <div class="input-group input-group-sm">
+            <select name="" id="fabricante"  class="form-control">
+                <option value="0">Selecione...</option>
+                <option value="Agrale">Agrale </option>
+                <option value="Aston Martin">Aston Martin </option>
+                <option value="Audi">Audi </option>
+                <option value="Bentley">Bentley </option>
+                <option value="BMW">BMW </option>
+                <option value="Changan">Changan </option>
+                <option value="Chery">Chery </option>
+                <option value="Chrysler">Chrysler </option>
+                <option value="Citroën">Citroën </option>
+                <option value="Dodge">Dodge </option>
+                <option value="Effa">Effa </option>
+                <option value="Ferrari">Ferrari </option>
+                <option value="Fiat">Fiat </option>
+                <option value="Ford">Ford </option>
+                <option value="Geely">Geely </option>
+                <option value="GM/Chevrolet">GM/Chevrolet </option>
+                <option value="Hafei">Hafei </option>
+                <option value="Honda">Honda </option>
+                <option value="Hyundai">Hyundai </option>
+                <option value="Iveco">Iveco </option>
+                <option value="Jac Motors">Jac Motors </option>
+                <option value="Jaguar">Jaguar </option>
+                <option value="Jeep">Jeep </option>
+                <option value="Jinbei">Jinbei </option>
+                <option value="Kia">Kia </option>
+                <option value="Lamborghini">Lamborghini </option>
+                <option value="Land Rover">Land Rover </option>
+                <option value="Lexus">Lexus </option>
+                <option value="Lifan">Lifan </option>
+                <option value="Mahindra">Mahindra </option>
+                <option value="Maserati">Maserati </option>
+                <option value="Mercedes-Benz">Mercedes-Benz </option>
+                <option value="MG Motors">MG Motors </option>
+                <option value="Mini">Mini </option>
+                <option value="Mitsubishi">Mitsubishi </option>
+                <option value="Nissan">Nissan </option>
+                <option value="Peugeot">Peugeot </option>
+                <option value="Porsche">Porsche </option>
+                <option value="Ram">Ram </option>
+                <option value="Renault">Renault </option>
+                <option value="Smart">Smart </option>
+                <option value="Ssangyong">Ssangyong </option>
+                <option value="Subaru">Subaru </option>
+                <option value="Suzuki">Suzuki </option>
+                <option value="Tesla">Tesla </option>
+                <option value="Toyota">Toyota </option>
+                <option value="Troller">Troller </option>
+                <option value="Volkswagen">Volkswagen </option>
+                <option value="Volvo">Volvo </option>
+            </select>
         </div>
     </div>
 </div>
@@ -162,7 +214,7 @@ include 'menu.php';
         <textarea class="form-control" rows="3" id="observacao"></textarea>
     </div>
     <div class="col-12">
-        <button style="margin-top: 1rem" class="btn btn-dark btn-sm btn-block" onclick="salvar()">
+        <button style="margin-top: 1rem" class="btn btn-dark btn-sm btn-block" onclick="cadastrar()">
             <i class="fa fa-check float-left" style="margin-top: 0.3rem;"></i> Salvar
         </button>
         <br>
@@ -172,9 +224,56 @@ include 'menu.php';
 </div>
 </body>
 <script>
-    //Função datepicker
-    $( function() {
-        $('#nascimento').datepicker();
+//Função datepicker
+$( function() {
+    $('#nascimento').datepicker();
+});
+
+//Função salvar cadastro
+function cadastrar(){
+    $('#preloader').show();
+    var data = {
+        cnpj: $('#cnpj').val(),
+        ie: $('#inscricao_estadual').val(),
+        razaoSocial: $('#razao_social').val(),
+        nomeFantasia: $('#nome_fantasia').val(),
+        nome: $('#nome').val(),
+        nascimento: $('#nascimento').val(),
+        cpf: $('#cpf').val(),
+        rg: $('#rg').val(),
+        orgaoEmissor: $('#orgao_emissor').val(),
+        email: $('#email').val(),
+        telefone: $('#telefone').val(),
+        celular: $('#celular').val(),
+        cep: $('#cep').val(),
+        endereco: $('#endereco').val(),
+        numero: $('#numero').val(),
+        complemento: $('#complemento').val(),
+        bairro: $('#bairro').val(),
+        cidade: $('#cidade').val(),
+        uf: $('#uf').val(),
+        fabricante: $('#fabricante').val(),
+        observacoes: $('#observacao').val(),
+        funcao: 'cadastro'
+    };
+    
+    $.ajax({
+        url: 'controller/fornecedor.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            if (data){
+                $('#preloader').hide();
+                window.location.href='#body';
+                monta_msg_sucesso(" Cadastro realizado com sucesso.");
+                window.setInterval(function(){
+                    remove_msg();
+                    window.location.reload();
+                },10000);
+
+            }
+        }
     });
+}
 </script>
 </html>

@@ -22,7 +22,7 @@ include 'menu.php';
     <div class="col-4">
         <h6 class="small" style="margin-top:1rem">CPF</h6>	
         <div class="input-group">
-            <input type="text" id="cpf" class="form-control" onkeyup="verifica_cpf()" placeholder="Ex.: 999.999.999-99" data-mask="999.999.999-99" name="">
+            <input type="text" id="cpf" class="form-control" placeholder="Ex.: 999.999.999-99" data-mask="999.999.999-99" name="">
         </div>
         <div class="text-danger"></div>
     </div>
@@ -44,7 +44,7 @@ include 'menu.php';
     <div class="col-6">
         <h6 class="small" style="margin-top:1rem">E-Mail</h6>	
         <div class="input-group">
-            <input type="email" id="email" class="form-control" onkeyup="valida_email()" placeholder="Ex.: exemplo@exemplo.com"  name="">
+            <input type="email" id="email" class="form-control" placeholder="Ex.: exemplo@exemplo.com"  name="">
         </div>
         <div class="text-danger"></div>
     </div>
@@ -124,7 +124,7 @@ include 'menu.php';
 <div class="row" id="info_cliente">
     <div class="col-9">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" onclick="esconde_campos()" id="check_cliente" aria-label="Checkbox for following text input">
+            <input class="form-check-input" type="checkbox" onclick="esconde_campos()" id="check_info" aria-label="Checkbox for following text input">
             <label class="form-check-label small" style="margin-top: 0.2rem">
                 Não possuo informações do veículo
             </label>
@@ -133,31 +133,48 @@ include 'menu.php';
 </div>
 <div id="dados_veiculo">
     <div class="row">
-        <div class="col-6">
+        <div class="col-4">
+            <h6 class="small">Tipo</h6>	
+            <div class="input-group input-group-sm">
+                <select class="form-control" id="tipo">
+                    <option value="0">Selecione...</option>
+                    <option value="segurado">Segurado</option>
+                    <option value="terceiro">Terceiro</option>
+                    <option value="particular">Particular</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
             <h6 class="small">Seguradora</h6>	
             <div class="input-group input-group-sm">
-                <select name="" id="fabricante"  class="form-control">
+                <select name="" id="seguradora"  class="form-control">
                     <option value="0">Selecione...</option>
                 </select>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <h6 class="small">Corretor</h6>	
             <div class="input-group input-group-sm">
-                <select name="" id="fabricante"  class="form-control">
+                <select name="" id="corretor"  class="form-control">
                     <option value="0">Selecione...</option>
                 </select>
             </div>
         </div>
     </div>
     <div class="row">
+        <div class="col-2">
+            <h6 class="small" style="margin-top:1rem">Sinistro</h6>	
+            <div class="input-group ">
+                <input type="text" id="sinistro" class="form-control"  placeholder="Ex.: 123456"  maxlength="100" name="">
+            </div>
+        </div>
         <div class="col-4">
             <h6 class="small" style="margin-top:1rem">Placa</h6>	
             <div class="input-group ">
                 <input type="text" id="placa" class="form-control" placeholder="Ex.: AAA-9999"  data-mask="aaa-9999"  name="">
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-6">
             <h6 class="small" style="margin-top:1rem">Modelo</h6>	
             <div class="input-group ">
                 <input type="text" id="modelo" class="form-control"  placeholder="Ex.: Exemplo Exemplo"  maxlength="100" name="">
@@ -246,6 +263,42 @@ include 'menu.php';
         </div>                 
     </div>
     <div class="row">
+        <div class="col-12" id="col_imagem"> 
+        <h6 class="small" style="margin-top:1rem">Imagem</h6>	
+            <div class="fileinput fileinput-new" style="margin-top: 0rem" data-provides="fileinput" style="margin-left: 1rem">
+                <div class="fileinput-preview thumbnail img-thumbnail" data-trigger="fileinput" style="width: 69.5rem;  height: 17.5rem"></div>
+                <div>
+                    <span class="btn btn-dark btn-sm btn-file col-12">
+                        <span class="fileinput-new ">Selecione a imagem</span>
+                        <span class="fileinput-exists" data-dismiss="fileinput">Alterar</span>
+                        <input type="file" id="arquivo" name="arquivo" accept="image/*">
+                    </span>
+                    <a href="#" class="btn btn-dark btn-sm fileinput-exists col-12" data-dismiss="fileinput" style="margin-top: 0.5rem">Remover</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <h6 class="small" style="margin-top:1rem">Serviços</h6>	
+            <div class="table-responsive">
+                <table class="table table-responsive table-stripped">
+                    <thead >
+                        <tr>
+                            <th class="small" scope="col">Serviço</th>
+                            <th class="small" scope="col">Funcionário</th>
+                            <th class="small" scope="col">Qtd. Peças</th>
+                            <th class="small" scope="col">
+                                <button  onclick="busca_servicos()"  class="btn btn-dark btn-sm col-12"><i class="fa fa-plus"></i> Adicionar</button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-3">
             <h6 class="small" style="margin-top:1rem">Data de entrada</h6>	
             <div class="input-group">
@@ -291,10 +344,42 @@ include 'menu.php';
 
 <div class="row">
     <div class="col-12">
-        <button style="margin-top: 1rem" class="btn btn-dark btn-sm btn-block" onclick="salvar()">
+        <button style="margin-top: 1rem" class="btn btn-dark btn-sm btn-block" onclick="incluir()">
             <i class="fa fa-check float-left" style="margin-top: 0.3rem;"></i> Salvar
         </button>
         <br>
+    </div>
+</div>
+
+<!-- Modal cadastrar servico -->
+
+<div class="modal fade" id="adicionaServicos" tabindex="-1" role="dialog" aria-labelledby="adicionaServicos" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Adicionar Serviços</h5> 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group ">
+                                <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-search"></i></span>
+                                <input type="text" id="pesquisa_servico" onkeyup="busca_servicos()" class="form-control"  placeholder="Digite para pesquisar" name="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" id="lista_servicos">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </main>
@@ -302,15 +387,291 @@ include 'menu.php';
 <!-- page-wrapper -->
 </body>
 <script>
+//Função datepicker
+$(function() {
+    $('#nascimento').datepicker();
+    $('#dt_entrada').datepicker();
+    $('#dt_entrada_ok').datepicker();
+    $('#dt_vistoria').datepicker();
+    $('#dt_autorizacao').datepicker();
+});
 
-    //Função datepicker
-    $(function() {
-        $('#nascimento').datepicker();
-        $('#dt_entrada').datepicker();
-        $('#dt_entrada_ok').datepicker();
-        $('#dt_vistoria').datepicker();
-        $('#dt_autorizacao').datepicker();
+var id_servicos  = [];
+
+// Função para buscar serviços
+function busca_servicos (){
+    $('#preloader').show();
+    $('#lista_servicos').val("");
+    var pesquisa = $('#pesquisa_servico').val();
+    var data = {funcao : "buscar_servicos" , pesquisa : pesquisa };
+    var html= "";
+    $.ajax({
+        url: 'controller/cliente&veiculo.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            if(data){
+                var resultado = $.parseJSON(data);
+                if(resultado.length > 0){
+
+                    $('#msg_servicos').html("");
+
+                    $('#adicionaServicos').modal('show');
+                    var html = "";
+                    for(var i = 0; i < resultado.length ; i++){
+
+                        html += '<div class="input-group" style="margin-top:1rem">'+
+                        '<input type="text" class="form-control" disabled placeholder="'+resultado[i].servico+'" aria-label="Recipients username" aria-describedby="basic-addon2">'+
+                        '<div class="input-group-append">'+
+                        '<button class="btn btn-dark" id="'+resultado[i].servico+'" onclick="adiciona_servico('+resultado[i].id +','+ resultado[i].tipo+', this)" type="button">Adicionar</button>'+
+                        '</div>'+
+                        '</div>';
+                    }
+                    $('#lista_servicos').html(html);
+
+                    $('#preloader').hide();
+
+                }else{
+
+                    var html =  '<div class="alert alert-danger">'+
+                                '<i class="fa fa-exclamation-triangle"></i>  Ocorreu um erro, por favor tente mais tarde'+
+                                '</div>';
+
+                    window.location.href='#msg_servicos';
+
+                    $('#msg_servicos').html(html);
+
+                    $('#preloader').hide();
+                }
+            }else{
+                var html =  '<div class="alert alert-danger">'+
+                            '<i class="fa fa-exclamation-triangle"></i>  Não possui nenhum serviço cadastrado,  cadastre um para prosseguir com esta ação'+
+                            '</div>';
+                window.location.href='#msg_servicos';
+                $('#msg_servicos').html(html);
+
+                $('#preloader').hide();
+            }
+        }
     });
+}
+
+function adiciona_servico(id , tipo_pagamento , descricao){
+    var html = "";
+    var confere = true;
+
+    for(var i = 0 ; i < id_servicos.length ; i++){
+        if( id == id_servicos[i] ){
+            confere = false;
+        }
+    }
+
+    id_servicos.push(id);
+
+    busca_funcionario(id);
+    $('#msg_servicos').html("");  
+
+    if(tipo_pagamento == 0 && confere){
+        html += '<tr id="'+id+'tr">'+
+                '<th style="display:none" id="'+id+'">'+id+'</th>'+
+                '<th style="text-align: center; vertical-align: middle" class="small" scope="col">'+descricao.id+'</th>'+
+                '<td scope="col">'+
+                '<div class="input-group input-group-sm">'+
+                '<select class="form-control" id="'+id+'s">'+
+                '<option value="0">Selecione um Funcionario</option>'+       
+                '</select>'+     
+                '</div>'+   
+                '<div class="text-danger"></div>'+          
+                '</td>'+
+                '<th scope="col">'+
+                    '<div>'+
+                    '<input type="text" class="form-control" placeholder="Qtd. peças" id="'+id+'i"  disabled value="Por carro">'+
+                    '</div>'+   
+                    '<div class="text-danger"></div>'+ 
+                '</th>'+
+                '<th scope="col">'+
+                '<button class="btn btn-sm btn-dark col-12" onclick="remove_servico('+id+');"><i class="fa fa-trash"></i> Remover</buttona>'+
+                '</th>'+
+                '</tr>';
+    }else if(confere){
+        html += '<tr id="'+id+'tr">'+
+                '<th style="display:none">'+id+'</th>'+
+                '<th style="text-align: center; vertical-align: middle" class="small" scope="col">'+descricao.id+'</th>'+
+                '<td scope="col">'+
+                '<div class="input-group input-group-sm">'+
+                '<select class="form-control" id="'+id+'s">'+
+                '<option value="0">Selecione um Funcionario</option>'+       
+                '</select>'+     
+                '</div>'+   
+                '<div class="text-danger"></div>'+     
+                '</td>'+
+                '<td scope="col">'+
+                    '<div>'+
+                    '<input type="text" class="form-control" id="'+id+'i"  placeholder="Qtd. peças">'+
+                    '</div>'+   
+                    '<div class="text-danger"></div>'+ 
+                '</td>'+
+                '<th scope="col">'+
+                '<button class="btn btn-sm btn-dark col-12" onclick="remove_servico('+id+');"><i class="fa fa-trash"></i> Remover</buttona>'+
+                '</th>'+
+                '</tr>';
+    }
+    $('#tbody').append(html);
+}
+
+function busca_funcionario(servico_id){
+    var data = {funcao : "busca_funcionarios" , servico_id : servico_id };
+    $.ajax({
+        url: 'controller/cliente&veiculo.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            if(data){
+                var html = '';
+                var resultado = $.parseJSON(data);
+                for(var i = 0; i < resultado.length ; i++  ){
+                    html += '<option value="'+resultado[i].id+'">'+resultado[i].nome+'</option>'; 
+                }   
+                $('#'+servico_id+'s').append(html);
+            }
+        }
+    });
+}
+
+function remove_servico(id ){
+    var nova_lista = id_servicos;
+    id_servicos = [];
+    for(var i = 0; i < nova_lista.length ; i++ ){
+        if ( nova_lista[i] != id ){
+            id_servicos.push(nova_lista[i]);
+        }
+    }
+    $('#'+id+'tr').remove();
+}
+
+//Função para selecionar corretor e seguradora
+busca_corretores();
+busca_seguradoras();
+function busca_corretores(){
+    var data = {funcao: 'busca_corretores'};
+    var html ;
+    $.ajax({
+        url: 'controller/cliente&veiculo.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            if(data){
+                var retorno = $.parseJSON(data);
+                html = "";
+                html += '<option value="">Selecione...</option>';
+                for(var i=0; i < retorno.length ; i++ ){
+                    if(retorno[i].nome != null){
+                        html += '<option value="'+retorno[i].id+'">'+retorno[i].nome+ '</option>';
+                    }else{
+                        html += '<option value="'+retorno[i].id+'">'+retorno[i].nome_fantasia+ '</option>';
+                    }
+                }
+
+                $('#corretor').html(html);
+            }
+        }
+    });
+}
+
+function busca_seguradoras(){
+    var data = {funcao: 'busca_seguradoras'};
+    var html ;
+    $.ajax({
+        url: 'controller/cliente&veiculo.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            if(data){
+                var retorno = $.parseJSON(data);
+
+                html = "";
+                html += '<option value="">Selecione...</option>';
+                for(var i=0; i < retorno.length ; i++ ){
+                    if(retorno[i].nome != null){
+                        html += '<option value="'+retorno[i].id+'">'+retorno[i].nome+ '</option>';
+                    }else{
+                        html += '<option value="'+retorno[i].id+'">'+retorno[i].nome_fantasia+ '</option>';
+                    }
+                }
+
+                $('#seguradora').html(html);
+            }
+        }
+    });
+}
+
+//Incluir
+function incluir(){ 
+    var data = new FormData();
+    data.append('arquivo', $('#arquivo').prop('files')[0]);
+    data.append('nome', $('#nome').val());
+    data.append('nascimento', $('#nascimento').val());
+    data.append('cpf', $('#cpf').val());
+    data.append('rg', $('#rg').val());
+    data.append('orgaoEmissor', $('#orgao_emissor').val());
+    data.append('email', $('#email').val());
+    data.append('telefone', $('#telefone').val());
+    data.append('celular', $('#celular').val());
+    data.append('cep', $('#cep').val());
+    data.append('endereco', $('#endereco').val());
+    data.append('numero', $('#numero').val());
+    data.append('complemento', $('#complemento').val());
+    data.append('bairro', $('#bairro').val());
+    data.append('cidade', $('#cidade').val());
+    data.append('uf', $('#uf').val());
+    data.append('observacoes', $('#observacao').val());
+    //verifica check
+    if(document.getElementById('check_info').checked == true){
+        data.append('check', '1');
+        data.append('horaEntrada', $('#hr_entrada').val());
+        data.append('dataEntrada', $('#dt_entrada').val());
+    }else{
+        data.append('check', '0');
+        data.append('dataEntrada', $('#dt_entrada_ok').val());
+    }
+    data.append('tipo', $('#tipo').val());
+    data.append('seguradora', $('#seguradora').val());
+    data.append('corretor', $('#corretor').val());
+    data.append('sinistro', $('#sinistro').val());
+    data.append('placa', $('#placa').val());
+    data.append('modelo', $('#modelo').val());
+    data.append('anoModelo', $('#ano_modelo').val());
+    data.append('anoFabricacao', $('#ano_fabricacao').val());
+    data.append('fabricante', $('#fabricante').val());
+    data.append('cor', $('#cor').val());
+    data.append('chassi', $('#chassi').val());
+    data.append('dataVistoria', $('#dt_vistoria').val());
+    data.append('dataAutorizacao', $('#dt_autorizacao').val());
+    data.append('funcao', "incluir");
+    $.ajax({
+        url: 'controller/cliente&veiculo.php',
+        method: "post",
+        data: data,
+        dataType: 'script',
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data){
+            alert(data);
+            // if(data){
+            //     window.location.href='#body';
+            //     monta_msg_sucesso(' Inclusão realizada com sucesso.');
+            //     window.setInterval(function(){
+            //         remove_msg();
+            //         window.location.reload();
+            //     },10000);
+            // }else{
+            //     window.location.href='#body';
+            //     monta_msg_erro("Ocorreu um erro, por favor tente novamente mais tarde!");
+            // }
+        }
+    });
+}
     
 </script>
 </html>

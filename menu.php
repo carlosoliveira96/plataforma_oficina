@@ -1,3 +1,6 @@
+<?php
+include 'controle.php';
+?>
 <html lang="pt-br" style="min-height:100%; position: relative;">
     <head>
         <meta charset="utf-8">
@@ -11,27 +14,23 @@
         <link rel="stylesheet" href="static/css/jquery-ui.css">
         <link rel="stylesheet" href="static/css/menu-custom.css">
         <link rel="stylesheet" href="static/css/fontawesome-all.css">
-        <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-        crossorigin="anonymous">-->
         <link rel="stylesheet" href="static/css/customScrollbar.css">
         <!-- Arquivos JS -->
         <script src="static/js/jquery.js"></script>
         <script src="static/js/popper.js"></script>
+        <script src="static/js/jasny-bootstrap.min.js"></script>
         <script src="static/js/bootstrap.js"></script>
-        
         
         <script src="static/js/menu-custom.js"></script>
         <script src="static/js/auxilio.js"></script>
-
         <script src="static/js/jquery-ui.js"></script>
         <script src="static/js/customScrollbat.js"></script>
         <script src="static/js/fontawesome-all.js"></script>
-        <script src="static/js/jasny-bootstrap.js"></script>
-        
-        
-        
     </head>
-    <body>
+    <body id="body">
+    <div id="preloader" class="carregando" style="display: none">
+        <img src="static/gif/loading.gif" style="position: fixed; margin-top: 25%; margin-left: 45%;">
+    </div>
     <div class="page-wrapper cool-theme toggled" id="div">
         <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
             <i class="fas fa-bars"></i>
@@ -46,8 +45,8 @@
                 </div>
                 <div class="sidebar-header">
                     <div class="user-info">
-                        <span class="user-name">Jhon
-                            <strong>Smith</strong>
+                        <span class="user-name">
+                            <strong><?php echo $_SESSION["nomeUsuario"] ?></strong>
                         </span>
                         <span class="user-role">Administrator</span>
                     </div>
@@ -71,9 +70,6 @@
                                 <li>
                                     <a href="expedientesAdm.php">Expedientes</a>
                                 </li>
-                                <li>
-                                    <a href="#">Relatórios</a>
-                                </li>
                             </ul>
                         </div>
                     </li>
@@ -90,16 +86,13 @@
                                 <li>
                                     <a href="#">Atendimentos</a>
                                 </li>
-                                <li>
-                                    <a href="#">Relatórios</a>
-                                </li>
                             </ul>
                         </div>
                     </li>
                     <li class="sidebar-dropdown">
                         <a href="#">
                             <i class="fas fa-pencil-alt"></i>
-                            <span>Manutanção</span>
+                            <span>Manutenção</span>
                         </a>
                         <div class="sidebar-submenu">
                             <ul>
@@ -144,16 +137,13 @@
                         <div class="sidebar-submenu">
                             <ul>
                                 <li>
-                                    <a href="#">Cliente & Veículo</a>
+                                    <a href="#">Administrativo</a>
                                 </li>
                                 <li>
-                                    <a href="#">Fornecedor</a>
+                                    <a href="#">Financeiro</a>
                                 </li>
                                 <li>
-                                    <a href="#">Corretor</a>
-                                </li>
-                                <li>
-                                    <a href="#">Seguradora</a>
+                                    <a href="#">Atendimento</a>
                                 </li>
                             </ul>
                         </div>
@@ -174,7 +164,7 @@
                     <i class="fa fa-envelope"></i>
                     <span class="badge badge-pill badge-success notification">7</span>
                 </a>
-                <a href="#" title="Sair">
+                <a href="#" title="Sair" onClick="logout()">
                     <i class="fa fa-power-off"></i>
                 </a>
             </div>

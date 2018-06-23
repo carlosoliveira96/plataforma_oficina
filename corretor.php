@@ -5,6 +5,7 @@ include 'menu.php';
     <p class="text-center small" style="color: #000"><b>Cadastro de corretor</b></p>
 </h2>
 <hr>
+<div id="msg"></div>
 <div class="row">
     <div class="col-12">
         <h6 class="small" style="margin-top:1rem">Tipo de cadastro</h6>
@@ -148,21 +149,13 @@ include 'menu.php';
     </div>
 </div>
 <hr>
-<div class="row" id="cadastro_fornecedor">
-    <div class="col-6">
-        <h6 class="small">Fabricante</h6>	
-        <div class="input-group ">
-            <input type="text" id="fabricante" class="form-control" placeholder="Ex.: Exemplo exemplo" maxlength="200" name="">
-        </div>
-    </div>
-</div>
 <div class="row">
     <div class="col-12">
-        <h6 class="small" style="margin-top:1rem">Observações</h6>	
+        <h6 class="small">Observações</h6>	
         <textarea class="form-control" rows="3" id="observacao"></textarea>
     </div>
     <div class="col-12">
-        <button style="margin-top: 1rem" class="btn btn-dark btn-sm btn-block" onclick="salvar()">
+        <button style="margin-top: 1rem" class="btn btn-dark btn-sm btn-block" onclick="cadastrar()">
             <i class="fa fa-check float-left" style="margin-top: 0.3rem;"></i> Salvar
         </button>
         <br>
@@ -172,9 +165,55 @@ include 'menu.php';
 </div>
 </body>
 <script>
-    //Função datepicker
-    $( function() {
-        $('#nascimento').datepicker();
+//Função datepicker
+$( function() {
+    $('#nascimento').datepicker();
+});
+
+//Função salvar cadastro
+function cadastrar(){
+    $('#preloader').show();
+    var data = {
+        cnpj: $('#cnpj').val(),
+        ie: $('#inscricao_estadual').val(),
+        razaoSocial: $('#razao_social').val(),
+        nomeFantasia: $('#nome_fantasia').val(),
+        nome: $('#nome').val(),
+        nascimento: $('#nascimento').val(),
+        cpf: $('#cpf').val(),
+        rg: $('#rg').val(),
+        orgaoEmissor: $('#orgao_emissor').val(),
+        email: $('#email').val(),
+        telefone: $('#telefone').val(),
+        celular: $('#celular').val(),
+        cep: $('#cep').val(),
+        endereco: $('#endereco').val(),
+        numero: $('#numero').val(),
+        complemento: $('#complemento').val(),
+        bairro: $('#bairro').val(),
+        cidade: $('#cidade').val(),
+        uf: $('#uf').val(),
+        observacoes: $('#observacao').val(),
+        funcao: 'cadastro'
+    };
+    
+    $.ajax({
+        url: 'controller/corretor.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            if (data){
+                $('#preloader').hide();
+                window.location.href='#body';
+                monta_msg_sucesso(" Cadastro realizado com sucesso.");
+                window.setInterval(function(){
+                    remove_msg();
+                    window.location.reload();
+                },10000);
+
+            }
+        }
     });
+}
 </script>
 </html>
