@@ -198,34 +198,52 @@ function monta_lista(lista){
     var html = "";
     $('#preloader').hide();
     if(nr_pag == qtd_pag && ultima_pag != 0 ){
+        var funcao = '';
         for(var i = 0; i < ultima_pag ; i++){
         html += '<tr>'
                     +'<td scope="row" class="small">'+lista[inicio].servico+'</td>'
                     +'<td scope="row" class="text-center">'
                         +'<button type="button" class="btn btn-dark btn-sm" onclick="monta_alteracao('+lista[inicio].id+', \''+lista[inicio].servico+'\', \''+lista[inicio].tipo+'\')" title="Alterar serviço">'
                             +'<i class="fas fa-edit"></i>'
-                        +'</button>'
-                        +'<button type="button" class="btn btn-dark btn-sm" style="margin-left: 0.2rem" onclick="confirma_exclusao('+lista[inicio].id+')" title="Remover serviço">'
-                            +'<i class="fas fa-trash"></i>'
-                        +'</button>'
-                    +'</td>'
+                        +'</button>';
+                        if (lista[inicio].situacao == '0'){
+                            funcao = 'reativar';
+                            html += '<button type="button" class="btn btn-dark btn-sm" style="margin-left: 0.2rem" onclick="confirma_exclusao('+lista[inicio].id+', \''+funcao+'\')" title="Reativar serviço">'
+                                +'<i class="fas fa-check-circle"></i>'
+                            +'</button>';
+                        }else {
+                            funcao = 'excluir';
+                            html += '<button type="button" class="btn btn-dark btn-sm" style="margin-left: 0.2rem" onclick="confirma_exclusao('+lista[inicio].id+', \''+funcao+'\')" title="Remover serviço">'
+                                +'<i class="fas fa-trash"></i>'
+                            +'</button>' ;
+                        }
+                    html += '</td>'
                 +'</tr>';
         inicio += 1 ;
     }
         $('#tbody_servico').append(html);
     }else{
+        var funcao = '';
         for(var i = 0; i < 14 ; i++){
             html += '<tr>'
                         +'<td scope="row" class="small">'+lista[inicio].servico+'</td>'
                         +'<td scope="row" class="text-center">'
                             +'<button type="button" class="btn btn-dark btn-sm" onclick="monta_alteracao('+lista[inicio].id+', \''+lista[inicio].servico+'\', \''+lista[inicio].tipo+'\')" title="Alterar serviço">'
                                 +'<i class="fas fa-edit"></i>'
-                            +'</button>'
-                            +'<button type="button" class="btn btn-dark btn-sm" style="margin-left: 0.2rem" onclick="confirma_exclusao('+lista[inicio].id+')" title="Remover serviço">'
+                                +'</button>';
+                        if (lista[inicio].situacao == '0'){
+                            funcao = 'reativar';
+                            html += '<button type="button" class="btn btn-dark btn-sm" style="margin-left: 0.2rem" onclick="confirma_exclusao('+lista[inicio].id+', \''+funcao+'\')" title="Reativar serviço">'
+                                +'<i class="fas fa-check-circle"></i>'
+                            +'</button>';
+                        }else {
+                            funcao = 'excluir';
+                            html += '<button type="button" class="btn btn-dark btn-sm" style="margin-left: 0.2rem" onclick="confirma_exclusao('+lista[inicio].id+', \''+funcao+'\')" title="Remover serviço">'
                                 +'<i class="fas fa-trash"></i>'
-                            +'</button>'
-                        +'</td>'
-                    +'</tr>';
+                            +'</button>' ;
+                        }
+                    html += '</td>'
+                +'</tr>';
             inicio += 1 ;
         }
             $('#tbody_servico').append(html);
@@ -290,24 +308,40 @@ function altera_registro(e){
 }
 
 
-function confirma_exclusao(id){
+function confirma_exclusao(id, funcao){
     //Mensagem de confirmação
-    monta_msg_confirma(' Confirma exclusão do serviço? <a href="#" id="confirma" class="btn btn-dark btn-sm" onclick="exclui_servico('+id+', this)">Sim</a> <a href="#" id="cancela" class="btn btn-secondary btn-sm" onclick="exclui_servico(0, this)">Não</a> ');
+    if(funcao == 'excluir'){
+        monta_msg_confirma(' Confirma exclusão do serviço? <a href="#" id="confirma" class="btn btn-dark btn-sm" onclick="exclui_servico('+id+', this, \''+funcao+'\')">Sim</a> <a href="#" id="cancela" class="btn btn-secondary btn-sm" onclick="exclui_servico(0, this, \''+funcao+'\')">Não</a> ');
+    }else{
+        monta_msg_confirma(' Confirma reativação do serviço? <a href="#" id="confirma" class="btn btn-dark btn-sm" onclick="exclui_servico('+id+', this, \''+funcao+'\')">Sim</a> <a href="#" id="cancela" class="btn btn-secondary btn-sm" onclick="exclui_servico(0, this, \''+funcao+'\')">Não</a> ');
+    }
 }    
 
-function exclui_servico(id, id_button){
+function exclui_servico(id, id_button, tipo){
     if (id_button.id == "confirma"){
         var desc_servico = $('#input_cadastro').val();
-        var data = {
-            id_servico: id,
-            funcao: "excluir"
-        };
+        if (tipo == 'excluir'){
+            var data = {
+                id_servico: id,
+                funcao: "excluir"
+            };
+        }else{
+            var data = {
+                id_servico: id,
+                funcao: "reativar"
+            };
+        }
         $.ajax({
             url: 'controller/servicos.php',
             method: "post",
             data: data ,
             success: function(data){
-                monta_msg_alerta(" Serviço inativado! Caso deseje ativá-lo novamente, entre em contato com o administrador.");
+                if (tipo == 'excluir'){
+                    monta_msg_alerta(" Serviço inativado! Caso deseje ativá-lo novamente, entre em contato com o administrador.");
+                }
+                else{
+                    monta_msg_alerta(" Serviço reativado! Caso deseje ativá-lo novamente, entre em contato com o administrador.");
+                }
                 window.setInterval(function(){
                     remove_msg();
                     window.location.reload();

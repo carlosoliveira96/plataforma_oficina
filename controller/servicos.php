@@ -26,7 +26,7 @@ switch ($funcao) {
         $desc_servico = $_POST["desc_servico"];
 
         if (strlen($desc_servico) > 0){
-            $condicao = "situacao=1 AND servico LIKE '%$desc_servico%'";
+            $condicao = "servico LIKE '%$desc_servico%'";
                         
             $servico = busca_detalhada_varios($conexao, $condicao, "servico");
 
@@ -39,7 +39,7 @@ switch ($funcao) {
         }else {
             $condicao = "situacao=1";
                         
-            $servico = busca_detalhada_varios($conexao, $condicao, "servico");
+            $servico = busca_todos($conexao, "servico");
 
             if ($servico != null ) {
                 print json_encode($servico);
@@ -63,9 +63,20 @@ switch ($funcao) {
             }
         break;
         case 'excluir':
+        //
             //Pega o valor do ID passado pelo javascript
             $id_servico = $_POST['id_servico'];
             $campos_valores = "situacao=0";
+            $condicao = "id='{$id_servico}'";
+            $servico = altera($conexao, $campos_valores, $condicao, "servico");
+            if (strlen($servico['id']) == 0 ) {
+                print json_encode($servico);
+            }
+        break;
+        case 'reativar':
+            //Pega o valor do ID passado pelo javascript
+            $id_servico = $_POST['id_servico'];
+            $campos_valores = "situacao=1";
             $condicao = "id='{$id_servico}'";
             $servico = altera($conexao, $campos_valores, $condicao, "servico");
             if (strlen($servico['id']) == 0 ) {
