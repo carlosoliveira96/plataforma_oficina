@@ -267,4 +267,109 @@ include 'menu.php';
 </div>
 <!-- page-wrapper -->
 </body>
+<script>
+busca_corretores();
+busca_seguradoras();
+busca_os();
+function busca_corretores(){
+    var data = {
+        funcao: 'busca_corretores'
+    };
+    var html ;
+    $.ajax({
+        url: 'controller/inicio.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            if(data){
+                var retorno = $.parseJSON(data);
+                html = "";
+                html += '<option value="">Selecione...</option>';
+                for(var i=0; i < retorno.length ; i++ ){
+                    if(retorno[i].nome != null){
+                        html += '<option value="'+retorno[i].id+'">'+retorno[i].nome+ '</option>';
+                    }else{
+                        html += '<option value="'+retorno[i].id+'">'+retorno[i].nome_fantasia+ '</option>';
+                    }
+                }
+
+                $('#corretor').html(html);
+            }
+        }
+    });
+}
+
+function busca_seguradoras(){
+    var data = {
+        funcao: 'busca_seguradoras'
+    };
+    var html ;
+    $.ajax({
+        url: 'controller/inicio.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            if(data){
+                var retorno = $.parseJSON(data);
+
+                html = "";
+                html += '<option value="">Selecione...</option>';
+                for(var i=0; i < retorno.length ; i++ ){
+                    if(retorno[i].nome != null){
+                        html += '<option value="'+retorno[i].id+'">'+retorno[i].nome+ '</option>';
+                    }else{
+                        html += '<option value="'+retorno[i].id+'">'+retorno[i].nome_fantasia+ '</option>';
+                    }
+                }
+
+                $('#seguradora').html(html);
+            }
+        }
+    });
+}
+
+var id_os = 0;
+function busca_os(){ 
+    $('#preloader').show();
+    var corretor = $('#corretor').val();
+    var seguradora = $('#seguradora').val();
+    var pesquisa = $('#pesquisa').val();
+    var data_inicio = $('#data_inicio').val();
+    var data_fim = $('#data_fim').val();
+
+    var data = {
+        funcao: 'busca_os', 
+        corretor : corretor, 
+        seguradora : seguradora, 
+        pesquisa : pesquisa, 
+        data_inicio : data_inicio, 
+        data_fim : data_fim 
+    };
+    var html ;
+    $.ajax({
+        url: 'controller/inicio.php',
+        method: "post",
+        data: data ,
+        success: function(data){
+            $('#preloader').hide();
+            if(data){
+                var retorno = $.parseJSON(data);
+                if(retorno.length > 0 ){
+                    var html_entrada = "";
+                    for(var i = 0 ; i <retorno.length ; i++ ){
+                        id_os = retorno[i].id;
+
+                        if(retorno[i].data_entrada != null){
+                            html_entrada += '<tr>'+
+                                '<td><b class="text-success"><a href="#" data-toggle="modal" data-target="#verificaCarro" onclick="detalha_os(\''+retorno[i].id_os+'\', \''+retorno[i].modelo+'\', \''+retorno[i].data_liberacao+'\', \''+retorno[i].placa+'\', \''+retorno[i].sinistro+'\', \''+retorno[i].nome+'\', \''+retorno[i].telefone+'\', \''+retorno[i].email+'\'); busca_servicos_os('+retorno[i].id+')">'+ retorno[i].modelo + ' - ' + retorno[i].placa + '</b></a></td>'+
+                                '</tr>';
+                        }
+                    }
+                }
+            }
+            $('#tbody_entrada').html(html_entrada);
+        }
+    });
+}
+</script>
 </html>

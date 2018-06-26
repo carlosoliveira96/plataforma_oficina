@@ -3,7 +3,7 @@ include('crud/crud.php');
 include('../conexao/conexao.php');
 
 date_default_timezone_set('America/Sao_Paulo');
-$date = date('d-m-Y');
+$date = date('d/m/Y');
 $mes = date('m');
 $ano = date('Y');
 $mes_ano = date('Y-m');
@@ -288,20 +288,21 @@ switch ($funcao) {
                         cep, endereco, numero, complemento, bairro, cidade, uf, situacao,
                         login_login, placa, fabricante, modelo, ano_fabricacao, ano_modelo,
                         cor, chassi, sinistro, data_vistoria_realizada, data_autorizacao,
-                        data_entrada, url_imagem";
-                $valores = "{$numero_servico}, $mes_ano, $date, {$nome}, {$cpf}, 
+                        data_entrada, seguradora_id, corretor_id, url_imagem";
+                $valores = "{$numero_servico}, $mes_ano, '$date', {$nome}, {$cpf}, 
                         {$rg}, {$orgaoEmissor}, {$nascimento}, {$telefone}, {$celular},
                         {$observacoes}, {$email}, {$cep}, {$endereco}, {$numero}, {$complemento},
                         {$bairro}, {$cidade}, {$uf}, '1', {$cpf}, {$placa}, {$fabricante},
                         {$modelo}, {$anoFabricacao}, {$anoModelo}, {$cor}, {$chassi}, {$sinistro},
-                        {$dataVistoria}, {$dataAutorizacao}, {$dataEntrada}, {$destino}";
+                        {$dataVistoria}, {$dataAutorizacao}, {$dataEntrada}, {$seguradora},
+                        {$corretor}, {$destino}";
             }
 
-            $empresa = insere($conexao, $campos , $valores , "cliente"); 
-            if (strlen($empresa['id']) <= 0 ) {
-                print json_encode($empresa);
+                $empresa = insere($conexao, $campos , $valores , "cliente"); 
+                if (strlen($empresa['id']) <= 0 ) {
+                    print json_encode($empresa);
+                }
             }
-        }
     break;
     default:
     break;
