@@ -1,9 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["usuarioLogado"])){
-    if($_SESSION["perfilUsuario"] != "1"){
-        header("Location:login.php");
-    }
+    header("Location:inicio.php");
 }else{
     header("Location:login.php");
 }

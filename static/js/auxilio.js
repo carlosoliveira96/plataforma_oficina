@@ -1,9 +1,9 @@
 //Função para sair do sistema
-function logout(){  
+function logout(){
     var usuario = null;
     var senha = null;
-    var data = {usuario: usuario, 
-        senha:senha, 
+    var data = {usuario: usuario,
+        senha:senha,
         funcao: 'logout'
     };
     var html ;
@@ -113,7 +113,7 @@ function busca_cep(){
                 $('#numero').focus();
                 remove_erro_input($('#cep'));
 
-               
+
            }else{
                 add_erro_input($('#cep') , 'CEP inválido');
                 $('#endereco').val('');
@@ -121,7 +121,7 @@ function busca_cep(){
                 $('#complemento').val('');
                 $('#bairro').val('');
                 $('#cidade').val('');
-                $('#uf').val('');	
+                $('#uf').val('');
            }
        });
     }else{
@@ -130,13 +130,13 @@ function busca_cep(){
         $('#complemento').val('');
         $('#bairro').val('');
         $('#cidade').val('');
-        $('#uf').val('');	
+        $('#uf').val('');
     }
 }
 
 //Função para verificar se usuário possui informações do veículo (cliente&veiculo.php)
 function esconde_campos(){
-    var check_cliente = document.getElementById("check_cliente");
+    var check_cliente = document.getElementById("check_info");
     if (check_cliente.checked){
         $('#dados_veiculo').hide();
         $('#info_manual').show();
@@ -225,7 +225,7 @@ function verifica_tipo_pessoa(){
         $('#cidade').val('');
         $('#uf').val('');
         document.getElementById('observacao').value="";
-        
+
         $('#fisica').hide();
         $('#juridica').show();
     }

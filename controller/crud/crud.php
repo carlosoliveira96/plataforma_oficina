@@ -4,7 +4,7 @@ include("../conexao/conexao.php");
 
 function insere($conexao, $campos , $valores , $tabela ) {
     $query = "INSERT INTO {$tabela} ({$campos}) VALUES ({$valores})";
-    
+
     if(mysqli_query($conexao, $query)){
         $id = mysqli_insert_id($conexao);
         return $id;
@@ -16,14 +16,14 @@ function insere($conexao, $campos , $valores , $tabela ) {
 }
 
 function busca_detalhada_varios($conexao, $condicao , $tabela , $campos = null){
-    
+
     $resultados = array();
     if ($campos){
         $query = "SELECT {$campos} FROM {$tabela} WHERE {$condicao} ";
     } else {
         $query = "SELECT * FROM {$tabela} WHERE {$condicao}";
     }
-    
+
     $result = mysqli_query($conexao, $query);
 
     if ($result == true) {
@@ -39,7 +39,7 @@ function busca_todos($conexao,  $tabela){
     $query = "SELECT * FROM {$tabela}";
     $result = mysqli_query($conexao, $query);
 
-    
+
     if ($result == true) {
         while ($resultado = mysqli_fetch_assoc($result)) {
             array_push($resultados, $resultado);
@@ -59,7 +59,7 @@ function busca_detalhada_um($conexao, $condicao , $tabela , $campos = null){
     }
 
     $result = mysqli_query($conexao, $query);
-    $resultado = mysqli_fetch_assoc($result); 
+    $resultado = mysqli_fetch_assoc($result);
 
     return $resultado;
 }
@@ -67,11 +67,11 @@ function busca_detalhada_um($conexao, $condicao , $tabela , $campos = null){
 function altera($conexao, $campos_valores, $condicao = null, $tabela) {
 
     $query = "";
-    
+
     if ($condicao){
         $query = "UPDATE {$tabela} SET {$campos_valores} WHERE {$condicao} ";
     }else{
-        $query = "UPDATE {$tabela} SET {$campos_valores} ";        
+        $query = "UPDATE {$tabela} SET {$campos_valores} ";
     }
 
     if(mysqli_query($conexao, $query)){
@@ -104,7 +104,7 @@ function logaUsuario($usuario) {
     //$_SESSION['img_usurio'] = $usuario['url_imagem'];
     //$_SESSION['cargo'] = $usuario['cargo'];
  }
- 
+
  function logout() {
      session_destroy();
  }

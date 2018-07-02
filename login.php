@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if (isset($_SESSION["usuarioLogado"])){
     header("Location:controle.php");
@@ -70,7 +70,7 @@ if (isset($_SESSION["usuarioLogado"])){
         </form>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="static/js/popper.js"></script>
-    <script type="text/javascript" src="static/js/bootstrap.js"></script>   
+    <script type="text/javascript" src="static/js/bootstrap.js"></script>
     </body>
 
     <script>
@@ -80,20 +80,20 @@ if (isset($_SESSION["usuarioLogado"])){
             enviar();
         }
     }, false);
-    
-    function enviar(){ 
+
+    function enviar(){
         var nomeUsuario = $('#usuario').val();
         var senhaUsuario = $('#senha').val();
         var validacao_ok = true;
-        
-        if (nomeUsuario.length == 0){ 
+
+        if (nomeUsuario.length == 0){
             validacao_ok = false;
             add_erro_input($('#usuario') , "Usuário deve ser informado para realizar login");
         } else {
             remove_erro_input($('#usuario'));
         }
 
-        if (senhaUsuario.length == 0){ 
+        if (senhaUsuario.length == 0){
             validacao_ok = false;
             add_erro_input($('#senha') , "Senha incorreta");
         } else {
@@ -101,10 +101,10 @@ if (isset($_SESSION["usuarioLogado"])){
         }
 
         if (validacao_ok){
-            var data = { 
-                login: nomeUsuario, 
-                senha: senhaUsuario, 
-                funcao: "login" 
+            var data = {
+                login: nomeUsuario,
+                senha: senhaUsuario,
+                funcao: "login"
             };
             $.ajax({
                 url: 'controller/login.php',

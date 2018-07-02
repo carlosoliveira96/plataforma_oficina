@@ -2,191 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="430ffec6-a504-47a8-997f-6120d3267309" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-bg_glass_20_555555_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-bg_glass_40_0078a3_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-bg_glass_40_ffc73d_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-bg_gloss-wave_25_333333_500x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-bg_highlight-soft_80_eeeeee_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-bg_inset-soft_25_000000_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-bg_inset-soft_30_f58400_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-icons_222222_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-icons_4b8e0b_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-icons_a83300_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-icons_cccccc_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/images/ui-icons_ffffff_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fonts/Font Awesome 5 Brands-Regular-400.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fonts/Font Awesome 5 Free-Regular-400.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fonts/Font Awesome 5 Free-Solid-900.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/calligra.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/calligra.z" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/gif/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/carro-login.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/previous.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/user.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/users.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-brands-400.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-brands-400.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-brands-400.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-brands-400.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-regular-400.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-regular-400.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-regular-400.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-regular-400.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-solid-900.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-solid-900.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-solid-900.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-solid-900.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/empresa.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/funcionarios.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/inicio.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/menu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap-datepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/customScrollbar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/fontawesome-all.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/fontawesome-all.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/jasny-bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/jasny-bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/jquery-ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/menu-custom.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/FAQ.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/changelog.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/acceptpagebreak.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/addfont.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/addlink.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/addpage.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/aliasnbpages.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/cell.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/close.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/error.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/footer.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/fpdf.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/getstringwidth.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/getx.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/gety.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/header.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/image.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/index.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/line.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/link.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/ln.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/multicell.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/output.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/pageno.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/rect.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setauthor.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setautopagebreak.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setcompression.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setcreator.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setdisplaymode.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setdrawcolor.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setfillcolor.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setfont.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setfontsize.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setkeywords.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setleftmargin.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setlinewidth.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setlink.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setmargins.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setrightmargin.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setsubject.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/settextcolor.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/settitle.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/settopmargin.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setx.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/setxy.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/sety.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/text.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/doc/write.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/courier.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/courierb.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/courierbi.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/courieri.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/helvetica.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/helveticab.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/helveticabi.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/helveticai.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/symbol.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/times.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/timesb.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/timesbi.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/timesi.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/font/zapfdingbats.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/fpdf.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/fpdf.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/install.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/license.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/cp1250.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/cp1251.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/cp1252.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/cp1253.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/cp1254.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/cp1255.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/cp1257.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/cp1258.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/cp874.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/iso-8859-1.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/iso-8859-11.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/iso-8859-15.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/iso-8859-16.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/iso-8859-2.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/iso-8859-4.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/iso-8859-5.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/iso-8859-7.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/iso-8859-9.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/koi8-r.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/koi8-u.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/makefont.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/makefont/ttfparser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/20k_c1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/20k_c2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/calligra.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/countries.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/index.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/makefont.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto1.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto1.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto2.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto2.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto3.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto3.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto4.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto4.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto5.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto5.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto6.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto6.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto7.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/fpdf/tutorial/tuto7.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/auxilio.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/bootstrap-datepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/bootstrap-datepicker.pt-BR.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/cep/cep.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/customScrollbat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/fontawesome-all.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jasny-bootstrap.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jasny-bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jasny-bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery-3.2.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery-ui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery.form.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/mascaraMoeda.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-custom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/popper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-brands-400.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-regular-400.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webfonts/fa-solid-900.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conexao/conexao.php" afterPath="$PROJECT_DIR$/conexao/conexao.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -196,12 +12,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="funcionarios.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/funcionarios.php">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="cliente&amp;veiculo.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controller/cliente&amp;veiculo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="66" column="25" lean-forward="true" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+            <state relative-caret-position="-45">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -216,6 +32,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/admin/funcionarios.php" />
+        <option value="$PROJECT_DIR$/conexao/conexao.php" />
       </list>
     </option>
   </component>
@@ -267,25 +84,26 @@
           <expand>
             <path>
               <item name="plataforma_oficina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="plataforma_oficina" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="plataforma_oficina" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="plataforma_oficina" type="b2602c69:ProjectViewProjectNode" />
-              <item name="plataforma_oficina" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="plataforma_oficina" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -312,31 +130,32 @@
       <workItem from="1528051661746" duration="268000" />
       <workItem from="1528116146879" duration="11000" />
       <workItem from="1528116193616" duration="929000" />
+      <workItem from="1530032883638" duration="777000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1208000" />
+    <option name="totallyTimeSpent" value="1985000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="0" width="1280" height="1024" extended-state="6" />
+    <frame x="1635" y="0" width="1366" height="725" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26209977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32888147" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -351,18 +170,20 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/empresa.php">
+    <entry file="file://$PROJECT_DIR$/admin/empresa.php" />
+    <entry file="file://$PROJECT_DIR$/admin/funcionarios.php" />
+    <entry file="file://$PROJECT_DIR$/conexao/conexao.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/funcionarios.php">
+    <entry file="file://$PROJECT_DIR$/controller/cliente&amp;veiculo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="66" column="25" lean-forward="true" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+        <state relative-caret-position="-45">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

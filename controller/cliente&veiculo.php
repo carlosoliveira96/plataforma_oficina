@@ -6,19 +6,20 @@ date_default_timezone_set('America/Sao_Paulo');
 $date = date('d/m/Y');
 $mes = date('m');
 $ano = date('Y');
-$mes_ano = date('Y-m');
+$mes_ano = date('mY');
 
 $funcao = $_POST['funcao'];
 
 session_start();
 switch ($funcao) {
     case 'buscar_servicos':
+
         $pesquisa = $_POST['pesquisa'];
-        $condicao = "a.id IN (SELECT c.servico_id FROM funcionario_servico c ) AND 
-        a.servico LIKE '%{$pesquisa}%' GROUP BY a.id";
+        $condicao = "a.id IN (SELECT c.servico_id FROM funcionario_servico c ) AND a.servico LIKE '%{$pesquisa}%' GROUP BY a.id";
         $tabela = "servico a, funcionario_servico b";
 
         $servicos = busca_detalhada_varios($conexao, $condicao, $tabela, "a.*");
+
 
         if($servicos != null){
             print json_encode($servicos);
@@ -27,12 +28,12 @@ switch ($funcao) {
     case 'busca_funcionarios':
         $id = $_POST['servico_id'];
         $pesquisa = '';
-        $condicao = "b.servico_id = '{$id}' and a.id = b.funcionario_id and a.nome 
+        $condicao = "b.servico_id = '{$id}' and a.id = b.funcionario_id and a.nome
         LIKE '%{$pesquisa}%'";
         $tabela = "funcionario a , funcionario_servico b";
 
         $funcionarios = busca_detalhada_varios($conexao, $condicao, $tabela, "a.*");
-    
+
         if($funcionarios != null){
             print json_encode($funcionarios);
         }
@@ -54,30 +55,35 @@ switch ($funcao) {
         if ($seguradoras != null){
             print json_encode($seguradoras);
         }
-    break;
+        break;
     case 'incluir':
 
         $destino = "";
-        // verifica se foi enviado um arquivo 
+        // verifica se foi enviado um arquivo
         if (isset($_FILES['arquivo']['name']) && $_FILES["arquivo"]["error"] == 0) {
             $arquivo_tmp = $_FILES['arquivo']['tmp_name'];
             $nome = $_FILES['arquivo']['name'];
             // Pega a extensao
             $extensao = strrchr($nome, '.');
-            // Converte a extensao para mimusculo
+            // Converte a extensao para minusculo
             $extensao = strtolower($extensao);
             // Somente imagens, .jpg;.jpeg;.gif;.png
             // Aqui eu enfilero as extesões permitidas e separo por ';'
             // Isso server apenas para eu poder pesquisar dentro desta String
-            if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
-                // Cria um nome único para esta imagem
-                // Evita que duplique as imagens no servidor.
-                $novoNome = md5(microtime()) . $extensao;
-                // Concatena a pasta com o nome
-                $destino = $novoNome;
-                @move_uploaded_file($arquivo_tmp, '../imagens/'.$destino);
+            if(strlen($extensao) > 0){
+                if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
+                    // Cria um nome único para esta imagem
+                    // Evita que duplique as imagens no servidor.
+                    $novoNome = md5(microtime()) . $extensao;
+                    // Concatena a pasta com o nome
+                    $destino = $novoNome;
+                    @move_uploaded_file($arquivo_tmp, '../imagens/'.$destino);
+                }
+            }else{
+                print 'false';
+                die();
             }
-        } 
+        }
 
         if (strlen($destino) <= 0){
             $destino = 'NULL';
@@ -228,7 +234,7 @@ switch ($funcao) {
         }else{
             $anoFabricacao = "'".$_POST['anoFabricacao']."'";
         }
-        
+
         if (strlen($_POST['fabricante']) <= 0){
             $fabricante = 'NULL';
         }else{
@@ -265,42 +271,71 @@ switch ($funcao) {
             $dataAutorizacao = "'".$_POST['dataAutorizacao']."'";
         }
 
+        if (strlen($_POST['horaEntrada']) <= 0){
+            $horaEntrada = 'NULL';
+        }else{
+            $horaEntrada = "'".$_POST['horaEntrada']."'";
+        }
+
+        $nr_reg = busca_detalhada_um($conexao, "mes_ano_cadastro = '{$mes_ano}' limit 1" , "cliente" , "count(mes_ano_cadastro) as quantidade");
+
+        $quantidade = array_shift($nr_reg);
+        $numero_registro = intval($quantidade) + 1;
+
+        $numero_servico = $numero_registro. '.' .$mes_ano;
+
         $senha = md5('123');
 
         $campos = "login, senha, status, perfil_id";
-        $valores= "{$cpf}, '$senha', '1', '1'";
-        
+        $valores= "{$numero_servico}, '$senha', '1', '1'";
+
         $login = insere($conexao, $campos, $valores, "login");
 
+        if(intval($mes) < 10 ){
+          $data_mes_ano = '0'. $mes_ano;
+        }else {
+          $data_mes_ano = $mes_ano;
+        }
+
         if (strlen($login['id']) <= 0) {
-            $id = mysqli_insert_id($conexao);
-            $numero_servico = $id.'.'.$mes.$ano;
 
-            if($_POST['check'] == '1'){
-                if (strlen($_POST['horaEntrada']) <= 0){
-                    $horaEntrada = 'NULL';
-                }else{
-                    $horaEntrada = "'".$_POST['horaEntrada']."'";
-                }
-            }else {
-                $campos = "numero_servico, mes_ano_cadastro, data_cadastro, nome, cpf, rg,
-                        orgao_emissor, data_nascimento, telefone, celular, observacao, email,
-                        cep, endereco, numero, complemento, bairro, cidade, uf, situacao,
-                        login_login, placa, fabricante, modelo, ano_fabricacao, ano_modelo,
-                        cor, chassi, sinistro, data_vistoria_realizada, data_autorizacao,
-                        data_entrada, seguradora_id, corretor_id, url_imagem";
-                $valores = "{$numero_servico}, $mes_ano, '$date', {$nome}, {$cpf}, 
-                        {$rg}, {$orgaoEmissor}, {$nascimento}, {$telefone}, {$celular},
-                        {$observacoes}, {$email}, {$cep}, {$endereco}, {$numero}, {$complemento},
-                        {$bairro}, {$cidade}, {$uf}, '1', {$cpf}, {$placa}, {$fabricante},
-                        {$modelo}, {$anoFabricacao}, {$anoModelo}, {$cor}, {$chassi}, {$sinistro},
-                        {$dataVistoria}, {$dataAutorizacao}, {$dataEntrada}, {$seguradora},
-                        {$corretor}, {$destino}";
-            }
+            $campos = "numero_servico, mes_ano_cadastro, data_cadastro, nome, cpf, rg,
+                    orgao_emissor, data_nascimento, telefone, celular, observacao, email,
+                    cep, endereco, numero, complemento, bairro, cidade, uf, situacao,
+                    login_login, placa, fabricante, modelo, ano_fabricacao, ano_modelo,
+                    cor, chassi, sinistro, data_vistoria_realizada, data_autorizacao,
+                    data_entrada, seguradora_id, corretor_id, url_imagem , hora_entrada";
+            $valores = "{$numero_servico}, '{$mes_ano}' , '$date', {$nome}, {$cpf},
+                    {$rg}, {$orgaoEmissor}, {$nascimento}, {$telefone}, {$celular},
+                    {$observacoes}, {$email}, {$cep}, {$endereco}, {$numero}, {$complemento},
+                    {$bairro}, {$cidade}, {$uf}, '1', {$numero_servico}, {$placa}, {$fabricante},
+                    {$modelo}, {$anoFabricacao}, {$anoModelo}, {$cor}, {$chassi}, {$sinistro},
+                    {$dataVistoria}, {$dataAutorizacao}, {$dataEntrada}, {$seguradora},
+                    {$corretor}, {$destino} , {$horaEntrada}";
 
-                $empresa = insere($conexao, $campos , $valores , "cliente"); 
-                if (strlen($empresa['id']) <= 0 ) {
-                    print json_encode($empresa);
+                $cliente = insere($conexao, $campos , $valores , "cliente");
+
+                if ($cliente > 0) {
+
+                    $lista_servicos = json_decode($_POST['servicos']);
+
+                    foreach($lista_servicos as $servico){
+
+                        $id_funcionario = $servico -> id_funcionario;
+                        $id_servico = $servico -> id_servico;
+                        $qtd_pecas = $servico -> qtd_pecas;
+                        if (strlen($qtd_pecas) <= 0){
+                            $qtd_pecas = '0';
+                        }
+
+                        $campos =  'cliente_id , servico_id , funcionario_id , situacao , qtd';
+                        $valores = "'{$cliente}' , '{$id_servico}' , {$id_funcionario} , 1 , '{$qtd_pecas}'";
+
+                        $cliente_servico = insere($conexao, $campos , $valores , "cliente_servico");
+                        
+                    }
+
+                    print json_encode($cliente);
                 }
             }
     break;
