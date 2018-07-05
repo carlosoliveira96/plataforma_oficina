@@ -101,6 +101,8 @@ function logaUsuario($usuario) {
     $_SESSION["usuario"] = $usuario['login'];
     $_SESSION["meu_id_funcionario"] = $usuario['id'];
     $_SESSION["nomeUsuario"] = $usuario['nome'];
+    $_SESSION["textoPerfil"] = $usuario['perfil'];
+    $_SESSION["perfil"] = $usuario['id_perfil'];
     //$_SESSION['img_usurio'] = $usuario['url_imagem'];
     //$_SESSION['cargo'] = $usuario['cargo'];
  }

@@ -23,7 +23,7 @@ switch ($funcao){
 
         $mensagens = "";
 
-        $mensagens = busca_detalhada_varios($conexao, "( funcionario_de = {$funcionario_id1} and funcionario_para = {$meu_id} ) or (funcionario_de = {$meu_id} and funcionario_para = {$funcionario_id1})" , 'mensagem' );
+        $mensagens = busca_detalhada_varios($conexao, "( funcionario_de = {$funcionario_id1} and funcionario_para = {$meu_id} ) or (funcionario_de = {$meu_id} and funcionario_para = {$funcionario_id1}) AND cliente_id is null" , 'mensagem' );
 
         if($mensagens != null){
             print json_encode($mensagens);
@@ -34,7 +34,7 @@ switch ($funcao){
 
         $meu_id = $_POST['meu_id'];
 
-        $quantidade = busca_detalhada_um($conexao, "funcionario_id = '{$meu_id} AND status = 0' limit 1" , "notificacao" , "count(status) as quantidade");
+        $quantidade = busca_detalhada_um($conexao, "funcionario_id = '{$meu_id}' AND status = 1 limit 1" , "notificacao" , "count(status) as quantidade");
 
         print array_shift($quantidade);
         break;
@@ -86,42 +86,51 @@ switch ($funcao){
             print json_encode($result);
         }
         break;
-    case 'salva_grupo':
-        $nome = $_POST['nome'];
+    case 'buscar_notificacoes':
+
         $id_funcionario = $_POST['id'];
-
-        $grupo = insere($conexao, 'nome', "'{$nome}'" , 'grupo' );
-
-        if($grupo > 0){
-
-            $grupo_funcionario = insere($conexao, 'grupo_id , funcionario_id', "'{$grupo}' , '{$id_funcionario}' " , 'grupo_funcionario' );
-            if(strlen($grupo_funcionario) > 0 ){
-                print $grupo;
-            }
-        }
+        $status = $_POST['status'];
         
-        break;
-    case 'salva_participantes':
 
-        $id_grupo = $_POST['id_grupo'];
-        $id_funcionario = $_POST['id_funcionario'];
+        $notificacoes = busca_detalhada_varios($conexao, "funcionario_id = '{$id_funcionario}' AND status = '{$status}' AND situacao = 1 ORDER BY id DESC " , "notificacao");
 
-        $grupo_funcionario = insere($conexao, 'grupo_id , funcionario_id', "'{$id_grupo}' , '{$id_funcionario}' " , 'grupo_funcionario' );
-        
-        if(strlen($grupo_funcionario) > 0 ){
-            print $grupo_funcionario;
+
+        if($notificacoes != null){
+            print json_encode($notificacoes);
         }
+                
         break;
-    case 'busca_grupos':
-
+    case 'apagar_notificacao':
+        
         $id = $_POST['id'];
-        $pesquisa = $_POST['pesquisa'];
 
-        $grupos = busca_detalhada_varios($conexao, "b.funcionario_id = {$id} AND b.grupo_id = a.id AND a.nome LIKE '%{$pesquisa}%'" , "grupo a , grupo_funcionario b ", "a.id , a.nome");
+        $notificacao = altera($conexao, 'situacao = 0', "id = '{$id}'", "notificacao");
+
+        print $notificacao;
+
+        break;
+    case 'buscar_mensagem_notificacao':
+    
+        $id = $_POST['id'];
+
+        $alteracao = altera($conexao, 'status = 0', "id = '{$id}'", "notificacao");
         
-        if($grupos != null ){
-            print json_encode($grupos);
+        $notificacao = busca_detalhada_um($conexao, "a.id = '{$id}' AND a.mensagem_id = b.id " , "notificacao a , mensagem b" , " b.* ");
+        
+        if($notificacao != null){
+            print json_encode($notificacao);
         }
+
+        break;
+    case 'atualiza_notificacao':
+        $id = $_POST['id'];
+        $data = $_POST['data'];
+        $hora =  $_POST['hora'];
+
+        $alteracao = altera($conexao, 'status = 0', "funcionario_id = '{$id}' AND data = '{$data}' AND hora = '{$hora}' ", "notificacao");
+        
+        print $alteracao;
+
         break;
     default:
         break;

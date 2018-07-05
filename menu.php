@@ -1,6 +1,8 @@
 <?php
-//include 'controle.php';
 session_start();
+if(!isset($_SESSION['meu_id_funcionario'])){
+    header("Location:login.php");
+}
 ?>
 <html lang="pt-br" style="min-height:100%; position: relative;">
     <head>
@@ -52,7 +54,7 @@ session_start();
                             <input type="hidden" value="<?php echo $_SESSION['meu_id_funcionario']?>" id="meu_id">
                             <input type="hidden" value="<?php echo $_SESSION["nomeUsuario"] ?>" id="meu_nome">
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role"><?php echo $_SESSION["textoPerfil"] ?></span>
                     </div>
                 </div>
                 <!-- sidebar-header  -->
@@ -160,7 +162,7 @@ session_start();
             </div>
             <!-- sidebar-content  -->
             <div class="sidebar-footer">
-                <a href="#" title="Notificação de mensagem">
+                <a href="#" title="Notificação de mensagem" onclick="buscarNotificacoes(1);" data-toggle="modal" data-target="#notificacao">
                     <i class="fa fa-bell"></i>
                     <span class="badge badge-pill badge-warning notification" id="qtd_notificacao"></span>
                 </a>
@@ -199,7 +201,7 @@ session_start();
                                         </table>
                                     </div>
                                     <div class="col-12" id="col-4" style="overflow-y: auto ; height: 90%">
-                                        <table class="table ">
+                                        <table class="table">
                                             <tbody id="tbody_conversas"></tbody>
                                         </table>
                                     </div>
@@ -267,10 +269,54 @@ session_start();
             </div>
         </div>
 
+        <div class="modal fade" id="notificacao"  tabindex="-1" role="dialog" aria-labelledby="notificaaco" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Notificações</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="height: 70%" id="comunicador-body" >
+                        <div class="row">
+                            <div class="col-12 col align-self-end">
+                                <div class="btn-group btn-group-toggle " data-toggle="buttons">
+                                    <label class="btn btn-outline-secondary btn-sm" onclick="buscarNotificacoes(1);">
+                                        <input type="radio" name="options" id="option1" autocomplete="off"  checked> Não lidas
+                                    </label>
+                                    <label class="btn btn-outline-secondary btn-sm" onclick="buscarNotificacoes(0);">
+                                        <input type="radio" name="options" id="option2" autocomplete="off" >Lidas
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 0.5rem">
+                            <div class="col-12" style="overflow-y: auto ; height: 90%">
+                                <table class="table table-bordered">
+                                    <thead class="">
+                                        <tr>
+                                            <th><small>Data</small></th>
+                                            <th><small>Notificação</small></th>
+                                            <th><small>#</small></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody_notificacao" >
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
 <script>
 
     var lista_id_conversa = [];
     var lista_funcionario = [];
+    var lista_funcionarios_selecionados = [];
     var meu_id = $('#meu_id').val();
     var meu_nome = $('#meu_nome').val();
     var altura = $('#chat-box').height();
@@ -326,6 +372,7 @@ session_start();
                         html += '</div>';    
                         html += '</div>';
                     showMessage(html);
+                    atualiza_notificacao(data.data , data.hora , meu_id);
                 }else if(data.contado_id == meu_id && data.meu_id != id_contato_aberto ){
                     busca_quantidade_notificacao();
                 }
@@ -358,6 +405,11 @@ session_start();
             var hora    = data2.getHours();          // 0-23
             var min     = data2.getMinutes();        // 0-59
             // Formata a data e a hora (note o mês + 1)
+
+            if (dia < 10){
+                dia = "0"+ dia;
+            }
+
             var m1 = mes+1;
             if (m1 < 10){
                 m1 = "0"+ m1;
@@ -410,7 +462,7 @@ session_start();
         $('#chat-box').append(messageHTML);
     });
 
-    function buscarfuncionarios(){
+    function buscarfuncionarios(id){
         var data = {funcao: 'busca_funcionarios', meu_id : meu_id};
         var html ;
         $.ajax({
@@ -425,6 +477,7 @@ session_start();
                         var html = '';
                         lista_funcionario = resultado;
                         $('#tbody_conversas').html('');
+                        var posicao = -1;
                         for(var i = 0 ; i < resultado.length ; i++){
                     
                             var string_nome = resultado[i].nome;
@@ -436,104 +489,128 @@ session_start();
                             }
                     
                             html+="<tr>";
-                            html+="<td><input type='checkbox' id='"+resultado[i].id+"c_chat' onclick='addConversa("+resultado[i].id+","+i+")'></td>";
+                            if(id == resultado[i].id){
+                                html+="<td><input type='checkbox' checked id='"+resultado[i].id+"c_chat' onclick='addConversa("+resultado[i].id+","+i+")'></td>";
+                            }else{
+                                html+="<td><input type='checkbox'  id='"+resultado[i].id+"c_chat' onclick='addConversa("+resultado[i].id+","+i+")'></td>";                                
+                            }
                             html+="<td>"+nome+"</td>";
                             html+="</tr>";
+
+                            if(id == resultado[i].id){
+                                posicao = i;
+                            }
                         }
                         $('#tbody_conversas').append(html);
+                        if(posicao >= 0){
+                            addConversa(id , posicao);
+                        }
                     }
                 }
             }
         })
     }
 
-    function addConversa(id , posicao){
+    function addConversa(id , posicao ){
+
         var check_id = $('#'+id+'c_chat');
         $('#chat-box').html('');
         
         if(check_id.is(":checked")){
             lista_id_conversa.push(id);
-        }else{
-            remove_id(id);
+            lista_funcionarios_selecionados.push(lista_funcionario[posicao]);
+        }else{            
+            remove_id(id , posicao);
         }
-        var html = "";
-        if(lista_funcionario[posicao].url_imagem == null){
-            html += '<img src="static/img/user.png"  style="margin-left:0.5rem" class="rounded-circle" height="35" width="35">';
+
+        var posicao =  lista_funcionarios_selecionados.length - 1;
+        if(lista_funcionarios_selecionados.length == 0){
+            $('#card_msg').hide();
+            $('#img_contato').html('');
+            $('#nome_contato').html('');
+            $('#input_nome_contato').val('');
+            $('#id_contato').val("");
+            lista_id_conversa = [];
         }else{
-            html += '<img src="imagens/'+lista_funcionario[posicao].url_imagem+'"  style="margin-left:0.5rem" class="rounded-circle" height="35" width="35">';
-        }
-        
-        altura = $('#chat-box').height();
+            var html = "";
+            if(lista_funcionarios_selecionados[posicao].url_imagem == null){
+                html += '<img src="static/img/user.png"  style="margin-left:0.5rem" class="rounded-circle" height="35" width="35">';
+            }else{
+                html += '<img src="imagens/'+lista_funcionarios_selecionados[posicao].url_imagem+'"  style="margin-left:0.5rem" class="rounded-circle" height="35" width="35">';
+            }
+            
+            altura = $('#chat-box').height();
 
-        $('#img_contato').html(html);
-        $('#nome_contato').html(lista_funcionario[posicao].nome);
-        $('#input_nome_contato').val(lista_funcionario[posicao].nome);
-        $('#id_contato').val(id);
-        
-        $('#card_msg').show();
+            $('#img_contato').html(html);
+            $('#nome_contato').html(lista_funcionarios_selecionados[posicao].nome);
+            $('#input_nome_contato').val(lista_funcionarios_selecionados[posicao].nome);
+            $('#id_contato').val(lista_funcionarios_selecionados[posicao].id);
+            
+            $('#card_msg').show();
 
-        var data = {
-            funcao : 'busca_conversa',
-            meu_id : meu_id,
-            funcionario_id : id
-        };
+            var data = {
+                funcao : 'busca_conversa',
+                meu_id : meu_id,
+                funcionario_id : lista_funcionarios_selecionados[posicao].id
+            };
 
-        $.ajax({
-            url: 'controller/chat.php',
-            method: "post",
-            data: data ,
-            success: function(data){ 
-                if(data){
-                    var resultado = JSON.parse(data);
-                    if(resultado.length > 0){
-                        var nome_contato =  $('#input_nome_contato').val();
+            $.ajax({
+                url: 'controller/chat.php',
+                method: "post",
+                data: data ,
+                success: function(data){ 
+                    if(data){
+                        var resultado = JSON.parse(data);
+                        if(resultado.length > 0){
+                            var nome_contato =  $('#input_nome_contato').val();
 
-                        var nome = nome_contato.substring(0 , 25);
+                            var nome = nome_contato.substring(0 , 25);
 
-                        if(nome_contato.length > 25){
-                            nome +="...";
-                        }
-
-                        for(var i=0; i<resultado.length ; i++){
-                            if(resultado[i].funcionario_de == meu_id ){
-                                var html = '<div class="row justify-content-end" style="margin-top: 1rem">';
-                                    html += '<div class="col-10 " style="margin-right:0.5rem">';
-                                    html += '<div class="card text-white bg-success ">';
-                                    html += '<div class="body" style="margin-top:0.5rem ; margin-bottom : 0.5rem">';
-                                    html += '<div style="margin-right:0.5rem"  class="text-right"><small>'+resultado[i].data+' - '+resultado[i].hora+' &nbsp;&nbsp; </small><strong> Eu </strong></div>';
-                                    html += '<div style="margin-right:1rem" class="text-right">'+resultado[i].conteudo+'</div>';
-                                    html += '</div>';
-                                    html += '</div>';
-                                    html += '</div>';
-                                    html += '</div>';
-                                showMessage(html);
-                            }else{
-                                var html = '<div class="row" style="margin-top: 1rem">';
-                                    html += '<div class="col-10" style="margin-left:0.5rem">';
-                                    html += '<div class="card text-white bg-primary ">';
-                                    html += '<div class="body" style="margin-top:0.5rem ; margin-bottom : 0.5rem">';
-                                    html += '<div style="margin-left:0.5rem"><strong>'+nome+'</strong><small> &nbsp;&nbsp;'+resultado[i].data+' - '+resultado[i].hora+'</small></div>';
-                                    html += '<div style="margin-left:1rem">'+resultado[i].conteudo+'</div>';
-                                    html += '</div>';
-                                    html += '</div>';
-                                    html += '</div>';    
-                                    html += '</div>';
-                                showMessage(html);
+                            if(nome_contato.length > 25){
+                                nome +="...";
                             }
-                            altura += 90;
+
+                            for(var i=0; i<resultado.length ; i++){
+                                if(resultado[i].funcionario_de == meu_id ){
+                                    var html = '<div class="row justify-content-end" style="margin-top: 1rem">';
+                                        html += '<div class="col-10 " style="margin-right:0.5rem">';
+                                        html += '<div class="card text-white bg-success ">';
+                                        html += '<div class="body" style="margin-top:0.5rem ; margin-bottom : 0.5rem">';
+                                        html += '<div style="margin-right:0.5rem"  class="text-right"><small>'+resultado[i].data+' - '+resultado[i].hora+' &nbsp;&nbsp; </small><strong> Eu </strong></div>';
+                                        html += '<div style="margin-right:1rem" class="text-right">'+resultado[i].conteudo+'</div>';
+                                        html += '</div>';
+                                        html += '</div>';
+                                        html += '</div>';
+                                        html += '</div>';
+                                    showMessage(html);
+                                }else{
+                                    var html = '<div class="row" style="margin-top: 1rem">';
+                                        html += '<div class="col-10" style="margin-left:0.5rem">';
+                                        html += '<div class="card text-white bg-primary ">';
+                                        html += '<div class="body" style="margin-top:0.5rem ; margin-bottom : 0.5rem">';
+                                        html += '<div style="margin-left:0.5rem"><strong>'+nome+'</strong><small> &nbsp;&nbsp;'+resultado[i].data+' - '+resultado[i].hora+'</small></div>';
+                                        html += '<div style="margin-left:1rem">'+resultado[i].conteudo+'</div>';
+                                        html += '</div>';
+                                        html += '</div>';
+                                        html += '</div>';    
+                                        html += '</div>';
+                                    showMessage(html);
+                                }
+                                altura += 90;
+                            }
+                                
+                            $('#chat-box').animate({
+                                scrollTop: altura
+                            }, 5);
+
                         }
-
-                        $('#chat-box').animate({
-                            scrollTop: altura
-                        }, 5);
-
                     }
                 }
-            }
-        })
+            })
+        }        
     }
 
-    function remove_id(id){
+    function remove_id(id , posicao){
         var nova_lista = lista_id_conversa;
         lista_id_conversa = [];
         for(var i = 0; i < nova_lista.length ; i++ ){
@@ -541,6 +618,15 @@ session_start();
                 lista_id_conversa.push(nova_lista[i]);
             }
         }
+
+        var nova_lista_posicao = lista_funcionarios_selecionados;
+        lista_funcionarios_selecionados = [];
+        for(var i = 0; i < nova_lista_posicao.length ; i++ ){
+            if ( nova_lista_posicao[i].id != id ){
+                lista_funcionarios_selecionados.push(nova_lista_posicao[i]);
+            }
+        }
+
     }
      
     busca_quantidade_notificacao();
@@ -589,5 +675,131 @@ session_start();
             }
         })      
     }
+
+    lista_notificacao = [];
+    function buscarNotificacoes(status){
+       
+        data = {
+            funcao : "buscar_notificacoes" ,
+            id : meu_id , 
+            status : status,
+        }
+
+        $.ajax({
+            url: 'controller/chat.php',
+            method: "post",
+            data: data ,
+            success: function(data){
+                if(data){
+                    var resultado = JSON.parse(data);
+                    lista_notificacao = resultado;
+                    if(resultado.length > 0){
+                        var html = "";
+                        for(var i = 0; i < resultado.length ; i++){
+                            html += "<tr>";
+                            html += "<td>"+resultado[i].data+"</td>";
+                            html += "<td>"+resultado[i].descricao+"</td>";
+                            if(status == 1){
+                                html += "<td><button class='btn btn-dark btn-sm' onclick='vizualizarMensagem("+i+")'><i class='fa fa-external-link-alt'></i></button</td>";
+                            }else{
+                                html += "<td><div class='row'><div class='col-6'><button class='btn btn-dark btn-sm' onclick='vizualizarMensagem("+i+")'><i class='fa fa-external-link-alt'></i></button></div>"+                                
+                                        "<div class='col-6' style='padding-left:0.3rem'><button class='btn btn-dark btn-sm' onclick='apagarMensagem("+i+")'><i class='fa fa-trash'></i></button></td></div></div>";                                
+                            }
+                            html += "</tr>";
+                        }
+                        $('#tbody_notificacao').html(html);
+                    }
+                }else{
+                    var html = "";
+                    $('#tbody_notificacao').html(html);                    
+                }
+            }
+        })  
+    }
+
+    function vizualizarMensagem(posicao){
+        var notificacao = lista_notificacao[posicao];
+
+        data = {
+            funcao : "buscar_mensagem_notificacao" ,
+            id : notificacao.id
+        }
+
+        $.ajax({
+            url: 'controller/chat.php',
+            method: "post",
+            data: data ,
+            success: function(data){
+                if(data){
+                    var resultado = JSON.parse(data);
+                    if(resultado.cliente_id == null){
+                        
+                        buscarfuncionarios(resultado.funcionario_de);
+                        
+                        $('#notificacao').modal('hide');
+                        $('#comunicacao').modal('show');
+                    }else{
+                        window.location.href='detalhamento.php?codOS='+resultado.cliente_id;
+                    }
+
+                    busca_quantidade_notificacao();
+
+                }
+            }
+                
+        }) 
+        
+    }
+
+    function apagarMensagem(posicao){
+        
+        var notificacao = lista_notificacao[posicao];
+
+        data = {
+            funcao : "apagar_notificacao" ,
+            id : notificacao.id
+        }
+
+        $.ajax({
+            url: 'controller/chat.php',
+            method: "post",
+            data: data ,
+            success: function(data){
+                buscarNotificacoes(0);
+                busca_quantidade_notificacao();
+            }
+                
+        }) 
+    }
+
+    function atualiza_notificacao( data , hora , id){
+        data = {
+            funcao : "atualiza_notificacao" ,
+            data : data,
+            hora : hora,
+            id : id
+        }
+
+        $.ajax({
+            url: 'controller/chat.php',
+            method: "post",
+            data: data ,
+            success: function(data){
+                buscarNotificacoes(0);
+                busca_quantidade_notificacao();
+            }
+                
+        }) 
+    }
+
+    $('#comunicacao').on('hidden.bs.modal', function (e) {
+        $('#card_msg').hide();
+        $('#img_contato').html('');
+        $('#nome_contato').html('');
+        $('#input_nome_contato').val('');
+        $('#id_contato').val("");
+        lista_funcionarios_selecionados = [];
+        lista_id_conversa = [];
+    });
 
 </script>

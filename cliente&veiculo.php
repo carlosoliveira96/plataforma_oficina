@@ -316,7 +316,9 @@ include 'menu.php';
             <div class="input-group input-file" name="Fichier1">
                 <span class="input-group-prepend">
                     <button class="btn btn-sm btn-dark btn-choose"  type="button">
-                      Escolher Arquivo
+                        <small> 
+                            Escolher Arquivo
+                        </small>     
                     </button>
                 </span>
                 <input type="text"  accept="image/*" id="imagem" class="form-control" style="height: 32px;" placeholder='Selecione uma imagem' />
@@ -509,13 +511,15 @@ function adiciona_servico(id , tipo_pagamento , descricao){
             confere = false;
         }
     }
+    
+    if(confere){
+        id_servicos.push(id);
+    }
 
-    id_servicos.push(id);
-
-    busca_funcionario(id);
     $('#msg_servicos').html("");
 
     if(tipo_pagamento == 0 && confere){
+        busca_funcionario(id);
         html += '<tr id="'+id+'tr">'+
                 '<th style="display:none" id="'+id+'">'+id+'</th>'+
                 '<th style="text-align: center; vertical-align: middle" class="small" scope="col">'+descricao.id+'</th>'+
@@ -529,7 +533,7 @@ function adiciona_servico(id , tipo_pagamento , descricao){
                 '</td>'+
                 '<th scope="col">'+
                     '<div>'+
-                    '<input type="text" class="form-control" placeholder="Qtd. peças" id="'+id+'i"  disabled value="Por carro">'+
+                    '<input type="text" class="form-control" placeholder="Qtd. peças" id="'+id+'i" placeholder="Qtd. peças" >'+
                     '</div>'+
                     '<div class="text-danger"></div>'+
                 '</th>'+
@@ -538,6 +542,7 @@ function adiciona_servico(id , tipo_pagamento , descricao){
                 '</th>'+
                 '</tr>';
     }else if(confere){
+        busca_funcionario(id);
         html += '<tr id="'+id+'tr">'+
                 '<th style="display:none">'+id+'</th>'+
                 '<th style="text-align: center; vertical-align: middle" class="small" scope="col">'+descricao.id+'</th>'+
@@ -551,7 +556,7 @@ function adiciona_servico(id , tipo_pagamento , descricao){
                 '</td>'+
                 '<td scope="col">'+
                     '<div>'+
-                    '<input type="text" class="form-control" id="'+id+'i"  placeholder="Qtd. peças">'+
+                    '<input type="text" class="form-control" id="'+id+'i" disabled value="Por carro"  >'+
                     '</div>'+
                     '<div class="text-danger"></div>'+
                 '</td>'+
@@ -740,6 +745,8 @@ function incluir(){
       data.append('dataAutorizacao', $('#dt_autorizacao').val());
       data.append('funcao', "incluir");
       data.append('servicos', JSON.stringify(servicos))
+      data.append('meu_id', meu_id)
+
       $.ajax({
           url: 'controller/cliente&veiculo.php',
           method: "post",

@@ -113,6 +113,8 @@ if (isset($_SESSION["usuarioLogado"])){
                 success: function(data){
                     if (data == "1"){
                         window.location.href = "conexao/controle.php";
+                    }else if(data == "2"){
+                        window.location.href = "primeiroAcesso.php?cpf="+nomeUsuario;
                     }else{
                         add_erro_input($('#usuario'));
                         add_erro_input($('#senha') , "Usuário ou senha inválido");

@@ -262,6 +262,7 @@ function cadastrar(){
         method: "post",
         data: data ,
         success: function(data){
+            alert(data);
             if (data){
                 $('#preloader').hide();
                 window.location.href='#body';

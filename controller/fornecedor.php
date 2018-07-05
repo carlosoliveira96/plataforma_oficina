@@ -133,36 +133,21 @@ switch ($funcao) {
             $observacoes = "'".$_POST['observacoes']."'";
         };
 
-        if ($cpf != 'NULL'){
-            $nome_usuario = $cpf;
-        }else{
-            $nome_usuario = $cnpj;
-        }
-
-        $senha = md5('123');
-
-        $campos = "login, senha, status, perfil_id";
-        $valores= "$nome_usuario, '$senha', '1', '1'";
+        //Passa informações de inclusão na variável utilizada
+        $campos = "tipo, nome, cpf, rg, orgao_emissor, data_nascimento, cnpj,
+        inscricao_estadual, telefone, celular, razao_social, nome_fantasia, observacao,
+        email, fabricante, cep, endereco, numero, complemento, bairro, cidade, uf, situacao ";
+        $valores= "'fornecedor', $nome, $cpf, $rg, $orgaoEmissor, $nascimento, $cnpj,
+        $ie, $telefone, $celular, $razaoSocial, $nomeFantasia, $observacoes, $email,
+        $fabricante, $cep, $endereco, $numero, $complemento, $bairro, $cidade, $uf, 
+        '1' ";
         
-        $login = insere($conexao, $campos, $valores, "login");
-        
-        if (strlen($login['id']) <= 0){
-            //Passa informações de inclusão na variável utilizada
-            $campos = "tipo, nome, cpf, rg, orgao_emissor, data_nascimento, cnpj,
-            inscricao_estadual, telefone, celular, razao_social, nome_fantasia, observacao,
-            email, fabricante, cep, endereco, numero, complemento, bairro, cidade, uf, situacao,
-            login_login";
-            $valores= "'fornecedor', $nome, $cpf, $rg, $orgaoEmissor, $nascimento, $cnpj,
-            $ie, $telefone, $celular, $razaoSocial, $nomeFantasia, $observacoes, $email,
-            $fabricante, $cep, $endereco, $numero, $complemento, $bairro, $cidade, $uf, 
-            '1', $nome_usuario";
-            
-            $expediente = insere($conexao, $campos, $valores, "cadastro");
+        $expediente = insere($conexao, $campos, $valores, "cadastro");
 
-            if (strlen($expediente['id']) <= 0 ) {
-                print json_encode($expediente);
-            }
+        if (strlen($expediente['id']) <= 0 ) {
+            print json_encode($expediente);
         }
+        
 
     break;
     default:

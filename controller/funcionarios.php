@@ -7,9 +7,8 @@ $funcao = $_POST['funcao'];
 session_start();
 switch ($funcao) {
     case 'busca_servicos':
-        $pesquisa = $_POST['pesquisa'];
 
-        $condicao = "situacao = 1 AND servico LIKE '%$pesquisa%'";
+        $condicao = "situacao = 1";
 
         $servicos = busca_detalhada_varios($conexao, $condicao, 'servico');
 
@@ -183,7 +182,7 @@ switch ($funcao) {
         $senha = md5('123');
 
         $campos = "login, senha, status, perfil_id";
-        $valores= "$nome_usuario, '$senha', '1', $nivelAcesso";
+        $valores= "$nome_usuario, '$senha', '3', $nivelAcesso";
         
         $login = insere($conexao, $campos, $valores, "login");
 
@@ -228,7 +227,17 @@ switch ($funcao) {
             }
         }
 
-    break;
+        break;
+    case 'verifica_cpf':
+        $cpf = $_POST['cpf'];
+        
+        $cpf = busca_detalhada_um($conexao, " cpf = '{$cpf}' " , "funcionario" );
+
+        if (strlen($cpf['id']) > 0 ) {
+            print json_encode($cpf);
+        }
+        
+        break;
     default:
-    break;
+        break;
 }
