@@ -64,9 +64,9 @@ include 'menu.php'
 //Função que troca os campos para pesquisa ou inclusão e realiza a inclusão no banco
 var tipo_pagamento = document.getElementById('check_pecas');
 function cadastro_servico(e){
-    tipo_pagamento.disabled = false;
-    tipo_pagamento.checked = false;
     if (e.id == "novo_servico"){
+        tipo_pagamento.disabled = false;
+        tipo_pagamento.checked = false;
         $('#confirma_inclusao').show();
         $('#cancela_inclusao').show();
         $('#div_cadastro').show();
@@ -79,8 +79,7 @@ function cadastro_servico(e){
         $('#input_pesquisa').show();
         $('#novo_servico').show();
     } else if (e.id == "confirma_inclusao"){
-        var t = document.getElementById("check_pecas"); 
-        var validacao_ok = true; 
+        var t = document.getElementById("check_pecas");
         var desc_servico = $('#input_cadastro').val();
         if (t.checked == true){
             remove_erro_input($('#input_cadastro'));
@@ -102,6 +101,7 @@ function cadastro_servico(e){
             method: "post",
             data: data ,
             success: function(data){
+                alert(data);
                 busca_servico();
                 monta_msg_sucesso(" Inclusão realizada com sucesso.");
             }
@@ -155,9 +155,9 @@ function busca_servico(){
 function monta_lista(lista){
     $('#paginacao').html("")
     $('#tbody_servico').html("");
-    var qtd_pag = lista.length / 14 ;
+    var qtd_pag = lista.length / 13 ;
     qtd_pag = parseInt(qtd_pag);
-    var ultima_pag = lista.length % 14;
+    var ultima_pag = lista.length % 13;
     if(ultima_pag != 0){
         qtd_pag += 1 ;
     }
@@ -174,7 +174,7 @@ function monta_lista(lista){
                 +'</li>';
     $('#paginacao').append(html2);
     var inicio = 0;
-    inicio = (nr_pag * 14) - 14  ;
+    inicio = (nr_pag * 13) - 13  ;
     for(var i = 1 ; i <= qtd_pag ; i++){
         var active = "";
         if (nr_pag == i){
@@ -224,7 +224,7 @@ function monta_lista(lista){
         $('#tbody_servico').append(html);
     }else{
         var funcao = '';
-        for(var i = 0; i < 14 ; i++){
+        for(var i = 0; i < 13 ; i++){
             html += '<tr>'
                         +'<td scope="row" class="small">'+lista[inicio].servico+'</td>'
                         +'<td scope="row" class="text-center">'

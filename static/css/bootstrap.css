@@ -4338,7 +4338,7 @@ input[type="button"].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: transparent;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -9035,4 +9035,14 @@ a.text-dark:hover, a.text-dark:focus {
   position: fixed;
   background: rgba(0, 0, 0, 0.7);
   z-index: 1000;
+}
+
+.retorno{
+  background-color: #0b2e13 !important;
+  border-color: #0b2e13;
+}
+
+.complemento_realizado{
+  background-color: #970000 !important;
+  border-color: #970000;
 }

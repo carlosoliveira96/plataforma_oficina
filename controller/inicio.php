@@ -71,6 +71,21 @@ switch ($funcao) {
         }
 
     break;
+    case 'buscar_servicos':
+        $id = $_POST['id'];
+
+        $condicao = "a.id = '$id' AND b.cliente_id = a.id AND b.servico_id = d.id AND 
+        b.funcionario_id = c.id AND a.situacao = '1'";
+        $tabelas = "cliente a, cliente_servico b, funcionario c, servico d";
+        $campos = "a.id, d.servico, b.data_inicio, c.nome, b.data_fim";
+
+        $servicos = busca_detalhada_varios($conexao, $condicao , $tabelas, $campos);
+        
+
+        if($servicos != null){
+            print json_encode($servicos);
+        }
+    break;
     default:
     break;
 }
